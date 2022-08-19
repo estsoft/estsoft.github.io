@@ -22,6 +22,12 @@ AI는 인공신경망의 등장부터 두 번의 AI 겨울이 지난 현재까�
 
 이번 article에서는 최소 시간과 컴퓨팅 자원을 사용해 최적의 hyperparameter를 찾는 <strong>‘hyperparameter optimization’</strong> 방법론을 살펴보고, 이중 <u>‘베이지안 최적화(bayesian optimization)’를 알고리즘 트레이딩에서 어떻게 활용할 수 있는지</u> 중점적으로 알아보겠습니다.
 
+<br>
+
+<hr />
+
+<br>
+
 <h1>What is Hyperparameter Optimization?</h1>
 
 Optimization이란 어떤 임의의 함수 f(x)의 값을 최대화 또는 최소화하는 해를 구하는 것입니다. 이 f(x)를 딥러닝 모델이라고 가정하면, 이 모델이 가질 수 있는 layer 개수, dropout  비율, 학습률(learning rate) 등 hyperparameter를 조절하여 성능을 최적화시키는 것을  <strong>‘초매개변수 조정(hyperparameter tuning)’</strong>이라고 합니다.
@@ -48,8 +54,11 @@ Bayesian optimization은 단순히 무작위 추출을 반복하는 것보다, �
 
 Bayesian optimization은 알려지지 않은 목적 함수를 최대/최소로 하는 최적해를 찾는 기법으로, <U>surrogate model과 acquisition function로 구성</U>됩니다. surrogate model은 현재까지 조사된 입력값-함숫값 점들을 바탕으로 f(x)를 추정하는 확률모델로, 보통 Gaussian Process가 주로 사용됩니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/1.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/05/1.jpg" alt="" /></a>
-ㅣ그림1. Bayesian optimization procedure [1]ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/1.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림1. Bayesian optimization procedure [1]</small></center>
 
 위 &lt;그림1>은 <U>3번의 반복 GP 연산 과정</U>을 보여주고 있습니다. 먼저 검정색 점들은 현재까지 조사된 입력값-함숫값 점이고, 검정색 실선이 GP의 평균값 μ(x), 보라색 음영이 x 위치별 표준편차 σ(x), 검정색 점선이 실제 f(x)값입니다.
 
@@ -58,6 +67,8 @@ surrogate 모델을 통해 현재 확보된 데이터와 평가지표 간의 관
 아래에 존재하는 초록색 음영은 <STRONG>Acquisition function</STRONG>으로, 다음 입력 후보 x를 탐색하여 추천하는 역할을 합니다. Acquisition Function은 우리가 Black-box라고 가정하는 함수 f(x)에 대해 확률 추정 모델의 결과를 바탕으로, n+1 시점 입력값 후보 x를 추천하는 함수인데요. 여기서 acquisition function의 목표는 지금까지 나온 값들보다 더 큰 값이 나올 가능성이 제일 높은 점을 추천해주는 것입니다. 이때 <U>최적 입력값 x는 조사된 점들 중 제일 높은 함수값 근처에 위치하거나, 표준편차가 최대인 점 근처에 위치할 가능성</U>이 높습니다. 이 두가지 경우를 <STRONG>Exploitation, Exploration전략</STRONG>이라고 합니다.
 
 Exploitation은 지금까지 주어진 정보에서 최고의 선택을 하는 것이고, Exploration은 더 많은 정보를 수집하는 것을 택하는 것입니다. 이때 새로운 정보를 수집하는 과정에서 표준편차가 최대인 점 근방에서 최적 입력값 x를 찾는 것을 시도하는데요. 이 두가지 전략이 적절한 균형을 잡을 수 있도록 하는 함수를 <STRONG>Expected Improvement(EI)</STRONG> 함수라고 합니다.
+
+<br/>
 
 <H1>Bayesian Optimization in Trading</H1>
 이번 파트에서는 주가 예측이 필요한 알고리즘 트레이딩에서 베이지안 최적화 기법을 어떻게 적용할 수 있을지, 제가 진행했던 간단한 실험을 바탕으로 설명드리겠습니다.
@@ -68,29 +79,45 @@ Exploitation은 지금까지 주어진 정보에서 최고의 선택을 하는 �
 
 백테스팅을 하기 위해서는 <STRONG>데이터와 프레임워크가 중요</STRONG>한데요. 본 실험에서 <U>데이터는 Finance DataReader, 백테스팅 프레임워크는 Backtrader을 선택</U>했습니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-1.jpg"><CENTER><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-1.jpg" alt="" /></a>
-ㅣfinance datareader를 통해 데이터 호출ㅣ</CENTER>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-1.jpg" alt="" /></a>
+</center>
+<center>
+<small>finance datareader를 통해 데이터 호출</small>
+</center>
 
 또한, Bayesian optimization을 트레이딩에 적용하기 위해서는 백테스팅 요소 외에도, 기본적으로 <u>최적화해야 할 hyperparameter와 이를 사용하는 알고리즘이 필요</u>한데요. <strong>optuna</strong> 프레임 워크를 통해서 <strong>Mean-Variance portfolio</strong> 알고리즘의 하이퍼파라미터를 최적화했습니다.
 
 <strong>optuna</strong>를 선택하게 된 이유는 편리함과 확장 가능성 때문입니다. 아래 &lt;표1>에서 각 프레임워크에서 제공하는 기능별로 비교하는 표를 보면, 해당 저자는 optuna가 가장 많은 기능을 제공하고 있다고 주장하는데요. 일반적으로 hyperparameter 최적화 기법에서 많이 사용되는 프레임워크인 hyperopt에 비해, optuna를 활용하면 algorithm trading에서 필요한 dashboard와 pruning을 사용할 수 있다는 장점이 있어 최종적으로 optuna를 선택했습니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-2.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-2.jpg" alt="" /></a>
-ㅣ표1. hyperparameter framework 기능 비교표 [5]ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-2.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-2.jpg" alt="" /></a>
+</center>
+<center>
+<small>표1. hyperparameter framework 기능 비교표 [5]</small>
+</center>
 
 <strong>mean variance model</strong>은 자세히 설명하기에는 너무 긴 내용이기 때문에 간단히 설명하자면 기대 수익에 대해 분산으로 표시되는 위험을 평가하는 모델입니다. 주어진 포트폴리오가 있을 때, 분산 대비 최대 수익율의 조합을 구하는 방법입니다. 시장은 상황에 따라 급변하는 특성을 가지고 있기 때문에, 최근 한달을 기준으로 목적함수를 최적화하여 최근 시장에 맞는 최적의 mean variance 식을 도출하고자 아래와 같은 식을 활용하였습니다.
-
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/v.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/05/v.jpg" alt="" /></a></center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/v.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/v.jpg" alt="" /></a>
+</center>
 
 여기서 alpha라는 hyperparameter를 통해서 수익률을 목적으로 최적화할지, 변동성을 목적으로 최적화할지, 조절이 가능한 식을 만들었습니다. 다음 백테스팅에서는 포트폴리오 리밸런싱을 한 달마다 실행했는데요. 실행하기 전에 포트폴리오 리밸런싱 당일 기준으로 <u>과거 한 달에 대해 alpha를 bayesian optimizer로 수익률을 최적화한 후, 다음 리밸런싱에 사용</u>하였습니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환3.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환3.jpg" alt="" /></a>
-ㅣ그림2. Bayesian 적용 기간ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환3.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환3.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림2. Bayesian 적용 기간</small>
+</center>
 
 이번 백테스팅에서 사용한 알고리즘은 코스피 30개 종목을 균등하게 매수하는 <strong>1/n porfolio</strong>, 위에 설명한 <strong>mean variance model</strong>과 bayesian optimization 기법으로 과거 1달의 수익률을 최적화한 mean variance model(<strong>bayesian mean variance model</strong>) 입니다. 이 3가지 알고리즘 모두 월 단위 기준으로 종목들의 비중을 조절하는 portfolio rebalancing을 진행했습니다.
-
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환4.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환4.jpg" alt="" /></a>
-ㅣOptuna objective functionㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환4.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환4.jpg" alt="" /></a>
+</center>
+<center>
+<small>Optuna objective function</small>
+</center>
 
 또한, 여기서 백테스팅 환경은 아래와 같이 구성하였습니다.
 
@@ -102,6 +129,8 @@ Exploitation은 지금까지 주어진 정보에서 최고의 선택을 하는 �
 monthly rebalancing
 </code></pre>
 
+<br/>
+
 <h1>Result</h1>
 
 백테스팅은 그 자체로는 의미를 가지지 못합니다. 앞에서 언급했듯이 완전한 과거 환경을 구현하여 테스트를 진행할 수 없고, 과거의 성능이 미래에서도 무조건 잘된다는 보장이 없기 때문입니다.
@@ -109,15 +138,26 @@ monthly rebalancing
 이같은 이유로 필요한 것이 바로 <strong>성과분석</strong>입니다. 성과분석을 통해 전략이 어느 정도의 수익률을 달성했는지, Max Draw Down (MDD)는 어느정도였는지, 변동성이 심한 장에서 잘 견디는지 등에 대한 정보를 제공받을 수 있습니다.
 
 아래의 &lt;표2>는 <strong>pyfolio</strong>라는 성과분석 도구를 사용하여 분석한 결과이며, &lt;표2>와 &lt;그림3> 각각은 3가지 모델(1/n portfolio model, mean variance model, bayesian mean variance model)의 성과를 보여주고 있습니다. 여기서 bayesian mean variance model은 mean variance model과 bayesian optimization을 통해 hyperparameter를 최적화한 모델입니다.
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/p.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/p.jpg" alt="" /></a>
+</center>
+<center>
+<small>pyfolio 분석 함수</small>
+</center>
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/p.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/05/p.jpg" alt="" /></a>
-ㅣpyfolio 분석 함수ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/7.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/7.jpg" alt="" /></a>
+</center>
+<center>
+<small>표2. 각 모델별 성과 분석 비교</small>
+</center>
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/7.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/05/7.jpg" alt="" /></a>
-ㅣ표2. 각 모델별 성과 분석 비교ㅣ</center>
-
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환8.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환8.jpg" alt="" /></a>
-ㅣ그림3. 누적 수익률ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환8.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환8.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림3. 누적 수익률</small>
+</center>
 
 결과 비교는 2015년-01월-02일 부터 2020년-12월-30일 까지의 기간을 가지고, 앞서 이야기한 3가지 알고리즘 백테스팅 결과를 비교분석하는 방식으로 이루어졌습니다.
 
@@ -127,17 +167,17 @@ monthly rebalancing
 
 앞서 분석한 결과를 가지고 전략을 선택하게 된다면 최소의 연평균 변동성이 필요한 시기엔 <strong>1/n portfolio</strong> 전략을, 수익률을 극대화하고 싶다면 <strong>bayesian optimization이 적용된 mean variance model</strong>을 선택할 수 있을 것입니다. 이처럼 때에 따라 선택하는 전략이 다르듯, <u>백테스팅을 통해 시기에 맞는 인사이트를 얻어 알고리즘 트레이딩에 사용</u>하는 것이 백테스팅의 역할입니다. bayesian optimization은 알고리즘 트레이딩에서 필수는 아니지만, 상황에 따라 최선의 선택이 될 수 있다고 생각하는데요. 오늘 소개드린 bayesian optimization과 알고리즘 트레이딩 내용이 도움이 되셨으면 좋겠습니다. 감사합니다.
 
+<br>
+
 <h1>reference</h1>
 
-<ul>
-<li>B. Shahriari, K. Swersky, Z. Wang, R. P. Adams and N. de Freitas, "Taking the Human Out of the Loop: A Review of Bayesian Optimization," in Proceedings of the IEEE, vol. 104, no. 1, pp. 148-175, Jan. 2016, doi: 10.1109/JPROC.2015.2494218.</li>
-<li>Bergstra, James, and Yoshua Bengio. "Random search for hyper-parameter optimization." Journal of machine learning research 13.2 (2012).</li>
-<li>Brochu et al., A tutorial on Bayesian optimization of expensive cost functions, with application to active user modeling and hierarchical reinforcement learning.</li>
-<li>Bengio et al., Practical recommendations for gradient-based training of deep architectures.</li>
-<li>Akiba, Takuya & Sano, Shotaro & Yanase, Toshihiko & Ohta, Takeru & Koyama, Masanori. (2019). Optuna: A Next-generation Hyperparameter Optimization Framework. 2623-2631. 10.1145/3292500.3330701.</li>
-<li>https://en.wikipedia.org/wiki/AI_winter</li>
-<li>https://github.com/FinanceData/FinanceDataReader</li>
-<li>https://www.backtrader.com/</li>
-<li>https://blog.naver.com/dpfkdlt/221678800067</li>
-<li>https://blog.naver.com/steve5636/222279062968</li>
-</ul>
+[1] B. Shahriari, K. Swersky, Z. Wang, R. P. Adams and N. de Freitas, "Taking the Human Out of the Loop: A Review of Bayesian Optimization," in Proceedings of the IEEE, vol. 104, no. 1, pp. 148-175, Jan. 2016, doi: 10.1109/JPROC.2015.2494218.<br/>
+[2] Bergstra, James, and Yoshua Bengio. "Random search for hyper-parameter optimization." Journal of machine learning research 13.2 (2012).<br/>
+[3] Brochu et al., A tutorial on Bayesian optimization of expensive cost functions, with application to active user modeling and hierarchical reinforcement learning.<br/>
+[4] Bengio et al., Practical recommendations for gradient-based training of deep architectures.<br/>
+[5] Akiba, Takuya & Sano, Shotaro & Yanase, Toshihiko & Ohta, Takeru & Koyama, Masanori. (2019). Optuna: A Next-generation Hyperparameter Optimization Framework. 2623-2631. 10.1145/3292500.3330701.<br/>
+[6] <https://en.wikipedia.org/wiki/AI_winter> <br/>
+[7] <https://github.com/FinanceData/FinanceDataReader><br/>
+[8] <https://www.backtrader.com/><br/>
+[9] <https://blog.naver.com/dpfkdlt/221678800067><br/>
+[10] <https://blog.naver.com/steve5636/222279062968><br/>

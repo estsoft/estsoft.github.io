@@ -24,6 +24,12 @@ language: kor
 
 <pre><center><a href="https://blog.est.ai/2021/03/employment-rate/"><strong>AI를 활용한 고용률 예측 모델 개발기(1) 보러가기 >>></strong></a></center></pre>
 
+<br>
+
+<hr />
+
+<br>
+
 <h1>1. 고용률 현재 예보에 대한 가정</h1>
 
 먼저 <strong>현재 예보</strong>는 현재 상황 또는 아주 가까운 미래를 예측한다는 의미를 가지고 있습니다. 고용률 현재 예보 모델이 풀고자 하는 문제는 바로 <U>과거 고용률 정보로부터 단기 미래값을 예측</U>하는 것인데요.
@@ -36,8 +42,13 @@ language: kor
 
 여기서 주목할 점은 과거 고용률 정보와 감정 정보가 각각 다른 기간($L$과 $W$)을 참조하고 있다는 점인데요. 고용률은 1년 주기로 비슷한 형태가 반복되기 때문에 이 주기성을 고려해야 합니다. 따라서 주기성을 나타내기 위해 고용률 입력기간은 1년 정도로 가정하고, 뉴스의 경우 주기성보다 시의성이 더욱 중요하기에 최신 뉴스를 중점적으로 반영하고자 입력기간을 다르게 설정하게 되었습니다. &lt;그림1>은 위 값들이 시간 $t$에 대해 어떤 관계를 가지는지 보여줍니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림1.jpg"><CENTER><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림1.jpg" alt="" /></a>
-ㅣ그림 1. $t+1$의 고용률을 예측하는데 필요한 고용률 정보의 기간($t:t-L$)과 감정 정보의 기간($t:t-W$)ㅣ</CENTER>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림1.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림 1. $t+1$의 고용률을 예측하는데 필요한 고용률 정보의 기간($t:t-L$)과 감정 정보의 기간($t:t-W$)</small></center>
+
+<br/>
 
 <h1>2. 초기 개발 과정에서 발생한 문제와 해결방법</h1>
 
@@ -61,6 +72,8 @@ language: kor
 
 위 데이터들은 각기 다른 scale과 적은 정보량을 가지고 있어 모델이 쉽게 학습될 수 있도록 고용률 값들을 정규화하고, offset 값은 31로 나누어서 0~1 사이의 값으로 scale을 맞추었습니다. 또한, 데이터 증강 외에 고용률 데이터를 일(日) 단위로 보간(interpolation)하는 방식을 통해 데이터의 양이 적다는 문제를 해결하려고 하였습니다. 시계열 데이터의 보간법은 여러가지가 있으나, 여기에서는 2차 곡선을 이용한 fitting 방식을 사용하였습니다.
 
+<br/>
+
 <h1>3. 최종 고용률 현재 예보 모델</h1>
 
 <h3>3.1. 데이터 구성</h3>
@@ -75,12 +88,17 @@ language: kor
 
 모델 구조를 살펴보면 고용률 현재 예보 모델은 1편에서 다룬 감정 정보 결합 모델과 고용률 정보 결합 모델로 구성됩니다. 먼저 <strong>감정 모델</strong>은 목표 날짜를 포함하여 일정 기간(window) 동안 수집된 뉴스 기사로부터 추출된 정보에 PCA를 적용한 값(<strong>e<sub>t:t-W</sub></strong>)을 입력으로 받아, 하나의 대표 정보를 만들기 위해 transfomer encoder 모델, 집합(aggregation), 정규화(batchnorm) 과정을 거칩니다. <strong>고용률 정보 모델</strong>의 경우 예측일에서 가장 가까운 고용률 데이터로부터 정해진 기간($L$) 만큼의 고용률 정보(<strong>e<sub>t:t-L</sub></strong>)를 입력으로 받아, 비슷한 방식으로 대표 정보를 만드는데요. 이렇게 만들어진 두 정보를 다시 통합한 후, 최종적으로 몇 개의 fully-connected layer와 batch normalization layer, relu, residual connection를 통과해서 예보값이 도출됩니다. 이 전체적인 흐름은 &lt;그림 2>와 같습니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림2.jpg"><CENTER><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림2.jpg" alt="" /></a>
-ㅣ그림 2. 고용률 현재 예보 모델의 구조 및 입력과 출력. 좌측이 감정 모델, 우측이 고용률 정보 모델.ㅣ</CENTER>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림2.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림2.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림 2. 고용률 현재 예보 모델의 구조 및 입력과 출력. 좌측이 감정 모델, 우측이 고용률 정보 모델.</small></center>
 
 이때, 각 모델은 self-attention 특성을 가지고 있는 <strong>transformer-encoder</strong> 모델을 사용했는데요. 일반적으로 딥러닝에서 고용률과 같이 시간 순서가 있는 데이터를 처리하기 위해서는 RNN 계열 모델들(e.g. LSTM, GRU)을 주로 사용하게 됩니다. 하지만 RNN로 시도했을 때, 성능이 예상보다 좋지 않아 transformer 모델을 사용하게 되었는데요. 고용률 예측을 위해서는 지난 1년간의 고용률 값을 입력해야 목표 날짜와 가까운 정보를 얻을 수 있는데, (e.g. 2020년 6월 1일 부근의 정보를 알기 위해서는 2019년 6월 1일 부근의 정보가 필요함) RNN은 모델 특성상 데이터를 순차적으로 처리하기 때문에 오래된 데이터일수록 그 비중이 낮아지는 관계로 1년 전 정보가 희석되어 유의미한 성능을 내기 어려웠던 것으로 분석됩니다.
 
 반면, self-attention 특성을 가진 transformer 모듈은 <u>입력 길이가 긴 경우에도 전체 시간에 바로 접근</u>할 수 있기 때문에, 오래된 과거의 입력 값이라도 그 정보의 의미가 유지되어 좋은 성능을 나타낼 수 있었습니다 [1]. 여기서 self-attention 구조는 여러 개의 입력들이 주어졌을 때, 유사도를 기반으로 입력값을 '섞어' 새로운 정보(embedding)를 만들어내는 특징이 있는데요. 이때 효율적으로 학습될 수 있도록 결과값에 더 큰 영향을 주는 입력값에 가중치를 부여합니다.
+
+<br/>
 
 <h1>4. 실험 결과</h1>
 
@@ -90,8 +108,11 @@ language: kor
 
 총 데이터의 양은 각각 train 1,185개, test 506개로, 상대적으로 적은 데이터의 정보와 양을 보완하기 위해 앞서 언급했듯이 데이터의 특징에 대한 증강 기법과 보간 방식을 활용했습니다. 자세한 구성은 아래 &lt;표1>과 같습니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/표1_final.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/03/표1_final.jpg" alt="" /></a>
-ㅣ표 1. 학습 데이터와 테스트 데이터의 현재 예보 고용률, 입력 고용률, 입력 뉴스의 기간과 데이터 수ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/표1_final.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/표1_final.jpg" alt="" /></a>
+</center>
+<center>
+<small>표 1. 학습 데이터와 테스트 데이터의 현재 예보 고용률, 입력 고용률, 입력 뉴스의 기간과 데이터 수</small></center>
 
 학습 데이터로는 2016/1/1부터 2019/4/10까지의 실제 고용률 데이터를 사용하였고, 입력값으로 예보일로부터 2년 전까지의 고용률 데이터와 해당 날짜부터 3일 전까지의 뉴스 데이터를 같이 사용하였습니다. 예를 들어 2016/1/1의 고용률을 현재 예보하기 위해서는 2014/12/1부터 2015/12/1까지의 고용률 데이터와 해당 데이터를 augment 한 데이터를 사용하며, 뉴스 데이터로는 2015/12/30~2016/1/1의 데이터를 사용했는데요.
 
@@ -101,20 +122,34 @@ language: kor
 
 결과 비교는 테스트 데이터를 대상으로 <strong>실제 고용률과 현재 예보 고용률 간의 상관계수(Pearson correlation coefficient)를 측정하는 방식</strong>으로 이루어졌습니다. 고용률 데이터의 경우 데이터의 양이 적은 만큼 모델의 학습에 따른 성능 변화가 있을 수 있으므로 10번의 학습을 진행하여 테스트 기간(2019/4/11 ~ 2020/8/31)에 대한 고용률 10개를 현재 예보했습니다. 이 값들의 평균을 내어 실제 고용률과의 상관계수(Pearson correlation coefficient)를 측정하였고, <strong>0.5934</strong>로 양의 상관관계가 나타났습니다. &lt;그림3>의 좌측은 실제 고용률(파란색)과 현재 예보 고용률(주황색)을 함께 표시한 그림이고, 우측은 동일한 기간에서 일주일 간격을 표시한 것입니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림3_final.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림3_final.jpg" alt="" /></a>
-ㅣ그림 3. (좌) 테스트 데이터 기간의 고용률과 현재 예보 값, (우) 같은 기간에 대해 일주일 간격 값ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림3_final.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림3_final.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림 3. (좌) 테스트 데이터 기간의 고용률과 현재 예보 값, (우) 같은 기간에 대해 일주일 간격 값</small>
+</center>
 
 전체적인 고용률의 경향성을 한눈에 쉽게 보기 위해 전체 학습 기간과 테스트 기간의 고용률을 &lt;그림4>와 같이 그려봤는데요. 해당 그림을 보면 고용률 현재 예보 값이 <u>학습 기간에서 반복되는 패턴(감소→증가)을 잘 학습하였고, 전체적인 고용률 추세도 잘 반영</u>하고 있음을 알 수 있습니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림4.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림4.jpg" alt="" /></a>
-ㅣ그림 4. 학습 + 테스트 기간(2016/1/1~2020/8/31)의 고용률과 현재 예보 고용률 값(주황색 부분)ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림4.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림4.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림 4. 학습 + 테스트 기간(2016/1/1~2020/8/31)의 고용률과 현재 예보 고용률 값(주황색 부분)</small>
+</center>
 
 하지만, 코로나 발생 기간에 해당하는 2020년 1월부터는 현재 예보한 고용률 값과 실제 고용률 값 간의 상당한 차이가 나타나고 있음을 볼 수 있는데요. 코로나와 같이 예상치 못한 사건이 발생할 경우, 계산된 값의 경향은 맞지만 값의 크기가 실제 값보다 더 크거나 작게 나올 수 있는데(overshoot/undershoot), 이번 케이스도 그런 형태인 것으로 분석됩니다.
 
 특수한 사건이 발생하지 않았을 경우의 모델 성능을 확인해보고자 코로나 발생 이전의 특정 기간을 설정해 추가적인 실험을 진행하였고, &lt;그림5>와 같은 결과를 얻었습니다. 2019/4/11부터 2019/12/31까지를 대상으로 실제 고용률과 현재 예보 고용률 값의 상관계수를 보았을 때, <strong>0.9304</strong>의 높은 양의 상관관계가 나타나는 것을 확인할 수 있었습니다. 이 점을 고려할 때, 일반적인 상황이라면 해당 모델을 고용률에 대한 현재 예보 용도로 사용할 수 있다고 판단됩니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림5.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림5.jpg" alt="" /></a>
-ㅣ그림 5. 테스트 데이터에서 코로나 기간을 제외한 기간(2019/4/11~2019/12/31)의 고용률과 현재 예보 값ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림5.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림5.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림 5. 테스트 데이터에서 코로나 기간을 제외한 기간(2019/4/11~2019/12/31)의 고용률과 현재 예보 값</small>
+</center>
+
+<br/>
 
 <h1>5. 향후 과제 및 마무리</h1>
 
@@ -122,9 +157,11 @@ language: kor
 
 지금까지 이스트소프트에서 개발한 텍스트를 이용한 고용률 현재 예보 모델에 대해 알아보았는데요. 내용이 많고 다소 복잡한 부분들도 있어 두 포스팅으로 나누어서 전달해드렸는데, 해당 내용이 앞으로 뉴스와 시계열 데이터를 이용한 연구를 하시는 분들에게 조금이나마 도움이 될 수 있으면 좋겠습니다. 감사합니다.
 
-<h3>참고문헌</h3>
+<br/>
 
-[1] Vaswani, Ashish, et al. "Attention is all you need." arXiv preprint arXiv:1706.03762 (2017).
+<h1>참고문헌</h1>
+
+[1] Vaswani, Ashish, et al. "Attention is all you need." arXiv preprint arXiv:1706.03762 (2017)<br/>
 [2] Cerqueira, Vitor, Luis Torgo, and Igor Mozetič. "Evaluating time series forecasting models: An empirical study on performance estimation methods." Machine Learning 109.11 (2020): 1997-2028.
 
 <pre><center><strong>[관련 포스팅 보러가기]</strong></center>

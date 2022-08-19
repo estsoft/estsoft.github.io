@@ -20,8 +20,16 @@ language: kor
 
 안녕하세요, 오늘은 <strong>줌인터넷이 연합뉴스와 공동 개발한 AI 기반 ‘뉴스 세 줄 요약’ 서비스</strong>에 대한 연구 내용을 소개드리려고 합니다. 해당 서비스는 기사 요약 AI 기술이 국내 언론에 최초로 도입된 사례로, 현재 연합뉴스 홈페이지에서 확인할 수 있는데요. 지금부터 해당 연구 내용의 소개와 학습 데이터 구축 과정을 중점적으로 서비스 개발 과정을 설명드리겠습니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/1.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/06/1.jpg" alt="" /></a>
-ㅣ그림1. 실제 연합뉴스 홈페이지에 적용된 ‘3줄 요약’ 서비스 (출처=연합뉴스 화면 캡처)ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/1.jpg" alt="" /></a>
+</center>
+<center><small>그림1. 실제 연합뉴스 홈페이지에 적용된 ‘3줄 요약’ 서비스 (출처=연합뉴스 화면 캡처)</small></center>
+
+<br>
+
+<hr />
+
+<br>
 
 <h1>1. 연구 내용 소개</h1>
 
@@ -39,6 +47,8 @@ language: kor
 
 따라서 추출적 방식을 활용하면 뉴스 기사에서 주제에 가까운 문장들을 쉽게 찾아, 이 문장들을 연결해 요약 서비스를 구현할 수 있게 되는데요. 만약 <u>추상적 방식을 활용하게 되면 생성된 문장에서 사용된 단어와 표현이 원문의 의도와 다르게 생성</u>될 가능성이 있기 때문에, 추출적 방식을 선택해 연구를 진행하게 되었습니다.
 
+<br>
+
 <h1>2. 학습 데이터 구축 과정</h1>
 
 <h3>1) 데이터 구축을 위한 전문인력 확보</h3>
@@ -55,15 +65,24 @@ language: kor
 
 태깅 툴을 제작하는 것 또한 시간과 노력을 들여야 하는 일이기 때문에 <u>초기에는 오픈 소스로 공개된 프로그램을 찾아서 활용</u>하도록 하였습니다. 인터넷상에 공개된 오픈 소스 태깅 툴도 적지 않은 수를 찾아볼 수 있는데, 쉽게 가져다 활용할 수 있는 반면 원하는 기능을 추가하기 위해서는 생각보다 많은 노력을 요구하는 경우가 많습니다. 이번 작업에서도 초기에는 <strong>오픈 소스 문서 태깅 도구인 Doccano</strong>를 설치하여 학습 데이터 생성 작업을 진행하였지만, 뉴스의 제목을 별도로 표시할 수 없는 등 필요한 기능이 충분하지 않고 사용자 인터페이스(UI)가 직관적이지 않아 뉴스 기사를 읽고 핵심 문장을 찾아 선택하여 입력하는 일련의 작업에 시간과 노력이 많이 요구된다는 문제가 있었습니다. 이러한 이유로, 보다 <u>효율적이고 정확한 데이터 생성 작업을 위해 뉴스 요약문 선정을 위한 태깅 툴을 직접 제작</u>하여 활용하게 되었습니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/2.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/06/2.jpg" alt="" /></a>
-ㅣ그림2. Doccano 예시, 문장을 드래그로 선택하고 미리 설정해 둔 태그를 클릭함으로써 태깅을 완료한다. 제목과 본문을 분리해서 보여줄 수 없고 내용 파악 및 문장 선택이 용이하지 않아 작업 효율이 떨어지고 피로도가 크다.ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/2.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/2.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림2. Doccano 예시, 문장을 드래그로 선택하고 미리 설정해 둔 태그를 클릭함으로써 태깅을 완료한다. 제목과 본문을 분리해서 보여줄 수 없고 내용 파악 및 문장 선택이 용이하지 않아 작업 효율이 떨어지고 피로도가 크다.</small></center>
 
 태깅 툴을 자체 제작하기로 결정하면서 가장 중요하게 고려한 사항은 <strong>1)주어진 뉴스 기사의 내용을 한 눈에 쉽게 이해하고, 2)선택 문장을 지정하고 이를 수정하는데 최소한의 노력만 필요</strong>하도록 설계한 것이었습니다. 우선 뉴스 기사는 <u>인터넷 뉴스 페이지에서 노출되는 것과 같은 형태</u>로, 이미지 및 단락 정보 등을 그대로 노출하여 기사의 내용을 보다 편하게 읽고 정확히 파악할 수 있도록 하였습니다. 또한 문장 선택 시 Doccano에서처럼 마우스를 드래그하여 처리하는 번거로움을 없애기 위해 주어진 <u>뉴스 기사의 문장을 자동으로 분리해, 분리된 문장 단위로 마우스에 반응하도록 UI를 구성</u>해, 단순한 클릭 한두 번으로 원하는 문장을 지정하고 수정할 수 있도록 하였습니다. 문장을 자동으로 분리하는 과정은 자연어 처리 기술을 활용하였고, 뉴스의 본문 내용과 관련이 없는 기타 정보들(기자/언론사명, 저작권 등 부가 문장)을 판별하여 제외하는 작업도 함께 진행하였습니다.
 
 이렇게 뉴스 요약 문장 선별 작업에 최적화된 형태의 태깅 툴 개발을 통해 태깅 작업에 소요되는 시간을 상당히 단축시킬 수 있었고, 태깅 작업자의 만족도 또한 올라가 더 나은 품질의 학습 데이터를 구축할 수 있었습니다. 학습 데이터 생성을 위한 태깅 툴의 역할은 단순히 대상 데이터를 보여주고 태깅 정보를 입력받는 것에서 발전하여, <strong>작업자에게 더욱 적합한 정보를 제공하고 단순 반복 작업을 최소화할 수 있는 기술적 지원</strong>까지 고려되어야 합니다. 또한 데이터 태깅 작업에 필요한 도메인 지식이 서로 다른 <strong>작업자 간에 태깅 결과물의 편차가 크지 않도록 보완하는 역할</strong>도 중요합니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/3-2.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/06/3-2.jpg" alt="" /></a>
-ㅣ그림3. 자체 제작 태깅 툴 예시, 일반 뉴스 서비스와 같은 형식의 뉴스 보기 기능이 있다. (데이터 제공=연합뉴스)ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/3-2.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/3-2.jpg" alt="" /></a>
+</center>
+<center>
+<small>
+그림3. 자체 제작 태깅 툴 예시, 일반 뉴스 서비스와 같은 형식의 뉴스 보기 기능이 있다. (데이터 제공=연합뉴스)</small></center>
+
+<br/>
 
 <h3>3) 데이터셋의 특성</h3>
 
@@ -72,30 +91,47 @@ language: kor
 추출식 요약 모델을 위한 데이터셋이기 때문에 정답 라벨은 문장이 아닌 <u>요약문에 선정될 문장의 위치(인덱스)</u>로 주어졌고, <strong>기사당 최대 3개의 요약문 위치</strong>가 학습을 위한 정답 데이터로 주어졌습니다.
 
 실제 데이터셋을 구성하는 기사당 문장 개수 분포를 살펴보면 <strong>평균적으로 15.9문장</strong>을 가지며, <strong>최소 1문장부터 최대 156문장</strong>까지 길어질 수 있음을 볼 수 있는데요.
-
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/4.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/06/4.jpg" alt="" /></a>
-ㅣ그림4. 기사당 문장 개수 분포ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/4.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/4.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림4. 기사당 문장 개수 분포</small>
+</center>
 
 하지만, 두괄식으로 서술되는 기사의 특성상 <u>정답 인덱스는 10을 넘어가는 경우가 거의 없음</u>을 알 수 있습니다.
-
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/5.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/06/5.jpg" alt="" /></a>
-ㅣ그림5. 정답 문장 위치(인덱스) 분포ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/5.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/5.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림5. 정답 문장 위치(인덱스) 분포</small>
+</center>
 
 WordPiece Tokenizer를 이용한 토큰화 결과 뉴스 기사를 구성하는 문장의 토큰 수 분포는 평균적으로 <strong>37.3개</strong>이며, <strong>17.4의 표준편차</strong>를 가지고 있는데요. 기사당 평균 문장 개수는 약 16개이기 때문에 문서당 평균 592개의 토큰을 가짐을 알 수 있습니다. 따라서 일반적인 트랜스포머 기반의 언어 모델을 이용하는 경우, 512개 이후의 토큰을 제거하거나 더 넓은 범위의 입력을 고려하고 싶은 경우엔 슬라이딩 윈도우 기법을 사용할 수 있습니다.
 
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/6.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/06/6.jpg" alt="" /></a>
-ㅣ그림6. 문장당 토큰 개수 분포ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/6.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/6.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림6. 문장당 토큰 개수 분포</small>
+</center>
+
+<br/>
 
 <h1>3. ‘세 줄 뉴스 요약’ 기술 개발 과정</h1>
 
 줌인터넷에서는 해당 데이터셋을 활용하여 추출 방식의 <strong>‘세 줄 뉴스 요약’</strong> 기술을 구현하였습니다. 이 데이터셋은 앞서 언급했던 것처럼 일반적인 텍스트 요약셋과는 달리 <u>요약 대상 글(뉴스 기사)의 제목을 포함</u>한다는 특성을 가지고 있는데요. 제목과 본문의 문장을 동시에 고려하여, 제목에 드러난 토픽을 잘 표현하는 문장으로 구성된 요약문이 사용될 수 있도록 모델 학습을 진행하였습니다.
 
 트랜스포머 기반의 프리트레인(pre-train) 모델에 요약문 포함 여부의 분류를 위한 레이어를 추가하여, 제목 토큰과 문장 토큰을 모델의 입력으로 넣었을 때 그 결과를 0과 1 사이의 값(확률)으로 출력하도록 학습시켰습니다. 이때 프리트레인 모델로는 구글의 ELECTRA를 사용했으며, 뉴스 본문을 구성하는 문장들에 대한 각 확률(스코어)를 얻고, 확률이 가장 높은 순으로 k개의 문장을 추출함으로써 요약문이 구성되도록 설계하였습니다. 자세한 모델 구현 과정은 아래 &lt;그림7>과 같습니다.
-
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/7.jpg"><center><img src="https://blog.est.ai/wp-content/uploads/2021/06/7.jpg" alt="" /></a>
-ㅣ그림7. 요약문 판단을 위한 요약문 여부 분류 모델ㅣ</center>
+<center>
+<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/7.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/7.jpg" alt="" /></a>
+</center>
+<center>
+<small>그림7. 요약문 판단을 위한 요약문 여부 분류 모델</small>
+</center>
 
 이를 바탕으로 현재 줌인터넷은 연합뉴스 홈페이지 내 <strong>하루 평균 900여 건의 기사에 대해 실시간 요약 서비스</strong>를 제공하고 있습니다. 다만, 사진, 영상기사, 인사 및 부고 등 요약할 필요가 없거나, 3문장 이하의 짧은 기사에는 해당 서비스가 적용되지 않고 있습니다.
+
+<br>
 
 <h1>4. 향후 연구방향</h1>
 
@@ -107,18 +143,19 @@ WordPiece Tokenizer를 이용한 토큰화 결과 뉴스 기사를 구성하는 
 
 앞으로도 줌인터넷의 AI 기술 연구 및 서비스에 많은 관심과 성원 부탁드립니다. 감사합니다.
 
+<br>
+
 <hr />
+
+<br>
 
 <h3>참고문헌</h3>
 
-<ul>
-<li>1) Get To The Point: Summarization with Pointer-Generator Networks
-(https://arxiv.org/abs/1704.04368)</li>
-<li>2) ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators
-(https://arxiv.org/abs/2003.10555)</li>
-<li>3) Extractive Summarization as Text Matching
-(https://arxiv.org/pdf/2004.08795.pdf)</li>
-</ul>
+1) Get To The Point: Summarization with Pointer-Generator Networks (<https://arxiv.org/abs/1704.04368>)<br>
+2) ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators
+(<https://arxiv.org/abs/2003.10555>)<br>
+3) Extractive Summarization as Text Matching
+(<https://arxiv.org/pdf/2004.08795.pdf>)
 
 <pre><center><strong>[관련 포스팅 보러가기]</strong>
 <a href="https://blog.est.ai/2021/02/fake-news/"><strong>‘가짜뉴스를 찾아라!’ 가짜뉴스 판별 특허 알아보기</strong>
