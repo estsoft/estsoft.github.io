@@ -22,7 +22,7 @@ language: kor
 
 본격적인 개발 과정을 소개하기 앞서, 1편을 못 보신 분들은 1편을 먼저 확인해주세요!
 
-<pre><center><a href="https://blog.est.ai/2021/03/employment-rate/"><strong>AI를 활용한 고용률 예측 모델 개발기(1) 보러가기 >>></strong></a></center></pre>
+<pre><center><a href="/2021/03/employment-rate" target="_blank"><strong>AI를 활용한 고용률 예측 모델 개발기(1) 보러가기 >>></strong></a></center></pre>
 
 <br>
 
@@ -43,7 +43,9 @@ language: kor
 여기서 주목할 점은 과거 고용률 정보와 감정 정보가 각각 다른 기간($L$과 $W$)을 참조하고 있다는 점인데요. 고용률은 1년 주기로 비슷한 형태가 반복되기 때문에 이 주기성을 고려해야 합니다. 따라서 주기성을 나타내기 위해 고용률 입력기간은 1년 정도로 가정하고, 뉴스의 경우 주기성보다 시의성이 더욱 중요하기에 최신 뉴스를 중점적으로 반영하고자 입력기간을 다르게 설정하게 되었습니다. &lt;그림1>은 위 값들이 시간 $t$에 대해 어떤 관계를 가지는지 보여줍니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림1.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0406/1.jpeg">
+<img src="/assets/img/2021/0406/1.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림 1. $t+1$의 고용률을 예측하는데 필요한 고용률 정보의 기간($t:t-L$)과 감정 정보의 기간($t:t-W$)</small></center>
@@ -89,7 +91,9 @@ language: kor
 모델 구조를 살펴보면 고용률 현재 예보 모델은 1편에서 다룬 감정 정보 결합 모델과 고용률 정보 결합 모델로 구성됩니다. 먼저 <strong>감정 모델</strong>은 목표 날짜를 포함하여 일정 기간(window) 동안 수집된 뉴스 기사로부터 추출된 정보에 PCA를 적용한 값(<strong>e<sub>t:t-W</sub></strong>)을 입력으로 받아, 하나의 대표 정보를 만들기 위해 transfomer encoder 모델, 집합(aggregation), 정규화(batchnorm) 과정을 거칩니다. <strong>고용률 정보 모델</strong>의 경우 예측일에서 가장 가까운 고용률 데이터로부터 정해진 기간($L$) 만큼의 고용률 정보(<strong>e<sub>t:t-L</sub></strong>)를 입력으로 받아, 비슷한 방식으로 대표 정보를 만드는데요. 이렇게 만들어진 두 정보를 다시 통합한 후, 최종적으로 몇 개의 fully-connected layer와 batch normalization layer, relu, residual connection를 통과해서 예보값이 도출됩니다. 이 전체적인 흐름은 &lt;그림 2>와 같습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림2.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림2.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0406/2.jpeg">
+<img src="/assets/img/2021/0406/2.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림 2. 고용률 현재 예보 모델의 구조 및 입력과 출력. 좌측이 감정 모델, 우측이 고용률 정보 모델.</small></center>
@@ -109,7 +113,9 @@ language: kor
 총 데이터의 양은 각각 train 1,185개, test 506개로, 상대적으로 적은 데이터의 정보와 양을 보완하기 위해 앞서 언급했듯이 데이터의 특징에 대한 증강 기법과 보간 방식을 활용했습니다. 자세한 구성은 아래 &lt;표1>과 같습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/표1_final.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/표1_final.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0406/3.jpeg">
+<img src="/assets/img/2021/0406/3.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>표 1. 학습 데이터와 테스트 데이터의 현재 예보 고용률, 입력 고용률, 입력 뉴스의 기간과 데이터 수</small></center>
@@ -123,7 +129,9 @@ language: kor
 결과 비교는 테스트 데이터를 대상으로 <strong>실제 고용률과 현재 예보 고용률 간의 상관계수(Pearson correlation coefficient)를 측정하는 방식</strong>으로 이루어졌습니다. 고용률 데이터의 경우 데이터의 양이 적은 만큼 모델의 학습에 따른 성능 변화가 있을 수 있으므로 10번의 학습을 진행하여 테스트 기간(2019/4/11 ~ 2020/8/31)에 대한 고용률 10개를 현재 예보했습니다. 이 값들의 평균을 내어 실제 고용률과의 상관계수(Pearson correlation coefficient)를 측정하였고, <strong>0.5934</strong>로 양의 상관관계가 나타났습니다. &lt;그림3>의 좌측은 실제 고용률(파란색)과 현재 예보 고용률(주황색)을 함께 표시한 그림이고, 우측은 동일한 기간에서 일주일 간격을 표시한 것입니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림3_final.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림3_final.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0406/4.jpeg">
+<img src="/assets/img/2021/0406/4.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림 3. (좌) 테스트 데이터 기간의 고용률과 현재 예보 값, (우) 같은 기간에 대해 일주일 간격 값</small>
@@ -132,7 +140,9 @@ language: kor
 전체적인 고용률의 경향성을 한눈에 쉽게 보기 위해 전체 학습 기간과 테스트 기간의 고용률을 &lt;그림4>와 같이 그려봤는데요. 해당 그림을 보면 고용률 현재 예보 값이 <u>학습 기간에서 반복되는 패턴(감소→증가)을 잘 학습하였고, 전체적인 고용률 추세도 잘 반영</u>하고 있음을 알 수 있습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림4.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림4.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0406/5.jpeg">
+<img src="/assets/img/2021/0406/5.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림 4. 학습 + 테스트 기간(2016/1/1~2020/8/31)의 고용률과 현재 예보 고용률 값(주황색 부분)</small>
@@ -143,7 +153,9 @@ language: kor
 특수한 사건이 발생하지 않았을 경우의 모델 성능을 확인해보고자 코로나 발생 이전의 특정 기간을 설정해 추가적인 실험을 진행하였고, &lt;그림5>와 같은 결과를 얻었습니다. 2019/4/11부터 2019/12/31까지를 대상으로 실제 고용률과 현재 예보 고용률 값의 상관계수를 보았을 때, <strong>0.9304</strong>의 높은 양의 상관관계가 나타나는 것을 확인할 수 있었습니다. 이 점을 고려할 때, 일반적인 상황이라면 해당 모델을 고용률에 대한 현재 예보 용도로 사용할 수 있다고 판단됩니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/03/그림5.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/03/그림5.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0406/6.jpeg">
+<img src="/assets/img/2021/0406/6.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림 5. 테스트 데이터에서 코로나 기간을 제외한 기간(2019/4/11~2019/12/31)의 고용률과 현재 예보 값</small>
@@ -165,4 +177,4 @@ language: kor
 [2] Cerqueira, Vitor, Luis Torgo, and Igor Mozetič. "Evaluating time series forecasting models: An empirical study on performance estimation methods." Machine Learning 109.11 (2020): 1997-2028.
 
 <pre><center><strong>[관련 포스팅 보러가기]</strong></center>
-<center><a href="https://blog.est.ai/2020/03/%eb%94%a5%eb%9f%ac%eb%8b%9d-%eb%aa%a8%eb%8d%b8-%ec%95%95%ec%b6%95-%eb%b0%a9%eb%b2%95%eb%a1%a0%ea%b3%bc-bert-%ec%95%95%ec%b6%95/"><strong>딥러닝 모델 압축 방법론과 BERT 압축</strong></a></center></pre>
+<center><a href="/2020/03/딥러닝-모델-압축-방법론과-bert-압축" target="_blank"><strong>딥러닝 모델 압축 방법론과 BERT 압축</strong></a></center></pre>

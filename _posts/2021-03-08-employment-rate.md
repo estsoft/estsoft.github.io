@@ -35,7 +35,9 @@ language: kor
 고용률 예측 문제는 크게 보면 <strong>시계열 예측(time series forecasting)</strong> 문제로 볼 수 있습니다. 시간에 의존적인 데이터를 대상으로, 앞 시간의 데이터를 보고 뒤쪽 시간에 해당하는 값을 예측하는 문제인데요. 이 중에서도 해당 문제는 <u>현황 또는 아주 가까운 미래를 예측하는 ‘현재 예보(nowcasting) 문제’</u>로 볼 수 있습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/04/1-1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/04/1-1.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0308/1.jpeg">
+<img src="/assets/img/2021/0308/1.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림1. 주어진 온도 값으로부터 미래의 온도 값을 예측하는 시계열 예측 문제 예시 [1].
@@ -49,7 +51,9 @@ language: kor
 &lt;그림2>와 같이 구성된 이 모델은 크게 <U>두가지 모듈(감정 모델, 고용률 현재 예보 모델)</U>로 나누어집니다. 뉴스 기사로부터 현재 고용 상황에 대한 감정(긍정/부정)을 추출하는 파트가 있고, 이를 이용하여 짧은 기간에 대한 고용률을 현재 예보하는 파트가 있습니다. 이번 포스팅에서는 &lt;그림2> 왼쪽의 감정모델에 대한 내용을 중점적으로 다루고, 고용률 현재 예보 모델에 대한 자세한 설명은 다음 포스팅에서 다뤄보겠습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/04/2.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/04/2.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0308/2.jpeg">
+<img src="/assets/img/2021/0308/2.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>
@@ -68,7 +72,9 @@ language: kor
 
 따라서 감정 모델은 &lt;그림3>과 같이 해당 뉴스가 고용 관련 뉴스인지 구분하는 <strong>뉴스 분류기</strong>와 고용 뉴스를 대상으로 고용 감정을 분류하고 감정 정보를 뽑아내는 <strong>감정 분석기</strong>로 구성하였습니다. 이 중에서 딥러닝 모델로 구현되는 부분은 고용 기사 분류 모델과 감정 분석 모델이며, 각 모델들은 현재 NLP에서 가장 널리 사용되는 BERT[3] 기반의 모델을 사용하였습니다.
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/04/3.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/04/3.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0308/3.jpeg">
+<img src="/assets/img/2021/0308/3.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림3. 감정 모델 구조도</small>
@@ -79,7 +85,9 @@ language: kor
 그 중에서 이번 감정모델 개발에 사용한 모델은 <strong>ELECTRA</strong>라는 모델입니다. ELECTRA 모델은 사전 학습 단계에서 GAN(Generative Adversarial Network)과 비슷하게 생성기(generator)와 판별기(discriminator)를 이용합니다. ELECTRA 모델을 학습시킬 때는 &lt;그림4>와 같이 본격적인 학습 전에 문장에 마스킹(masking) 작업을 진행합니다. 이후 생성기가 마스킹된 단어를 예측해서 새로운 문장을 만들고, 이 문장을 가지고 판별기가 원본 문장과 일치하는지, 생성기가 생성한 단어인지를 판별하는 식으로 학습이 진행됩니다. <u>마스킹된 단어를 맞추는 방식으로 학습을 진행하기 때문에 모르는 단어가 나와도 그 성능이 쉽게 저하되지 않는다는 장점</u>이 있습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/04/4.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/04/4.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0308/4.jpeg">
+<img src="/assets/img/2021/0308/4.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림4. ELECTRA 모델이 학습되는 과정</small>
@@ -96,7 +104,9 @@ language: kor
 AI 모델 개발에서 데이터의 양과 질은 모델의 성능을 좌우할 정도로 중요한 역할을 합니다. 이번 모델에서는 AI가 잘 훈련을 할 수 있도록, 데이터 자체를 정제하는 <strong>기사 필터링 작업(5개 유형)</strong>과 딥러닝 학습을 위해 <strong>텍스트 데이터를 토큰으로 변환하는 과정(Sentence Piece Tokenizer)</strong>을 거쳤습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/04/5-1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/04/5-1.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0308/5.jpeg">
+<img src="/assets/img/2021/0308/5.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림5. 데이터 전처리 과정</small>
@@ -113,7 +123,9 @@ AI 모델 개발에서 데이터의 양과 질은 모델의 성능을 좌우할 
 위와 같은 전처리 과정을 거친 뉴스 기사들은 &lt;그림6>와 같이 고용 기사 분류 모델의 입력(input)으로 들어가, 해당 뉴스 기사가 고용 관련 뉴스 기사인지를 판정하는 과정을 거칩니다. <u>해당 모델의 입력값으로 기사를 넣으면 이 기사가 고용과 관련있을 확률과 관련없을 확률이 몇 퍼센트인지 출력값을 도출</u>합니다. 이 모델은 간단하게 <strong>KoELECTRA와 fully-connected layer</strong>를 이용하여 구현하였으며, 레이블링 된 데이터셋을 통해 고용 관련 뉴스 기사 여부를 재학습(fine-tuning)하였습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/04/6-1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/04/6-1.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0308/6.jpeg">
+<img src="/assets/img/2021/0308/6.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림6. 고용 기사 분류 모델의 입력과 출력</small>
@@ -124,7 +136,9 @@ AI 모델 개발에서 데이터의 양과 질은 모델의 성능을 좌우할 
 감정 분석 모델은 위의 고용 기사 분류 모델을 통해 <u>‘고용과 관련됐다’고 판단된 뉴스들에 대해 감정 정보</u>를 뽑습니다. 모델 구성은 고용 분류 모델과 비슷하게 <strong>KoELECTRA와 fully-connected layer</strong>를 활용했으며, 모델의 학습 시에는 뉴스 기사로부터 추출된 고용 감정의 세가지 클라스(긍정/보통/부정)에 대한 확률을 학습합니다. 학습이 끝난 후에는 학습된 모델에서 맨 마지막 단계인 softmax 함수를 거치기 전의 임베딩을 이후 고용 감정 정보로 활용합니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/04/7-1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/04/7-1.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0308/7.jpeg">
+<img src="/assets/img/2021/0308/7.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림7. 감정 분석 모델의 입력과 출력</small>
@@ -144,7 +158,9 @@ AI 모델 개발에서 데이터의 양과 질은 모델의 성능을 좌우할 
 
 모델 학습과 평가를 위한 데이터는 표1과 같이 정부 사업을 통해 수집된 후 수작업으로 레이블링된 뉴스 데이터를 제공받았습니다. 고용 기사 분류 모델에서는 전처리를 거친 101,565개의 기사 데이터 중 81,252개에 해당하는 데이터를 학습에 활용하였고, 나머지 20,313개 데이터는 테스트에 활용하였습니다. 감정 분석 모델에서도 전처리를 거친 총 7,519개의 기사 중 6,015개의 기사를 학습에 활용하고, 이후 1,504개의 기사를 바탕으로 모델의 성능을 분석하였습니다.
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/04/8-1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/04/8-1.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0308/8.jpeg">
+<img src="/assets/img/2021/0308/8.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>표1. 감정 모델 학습을 위한 데이터 통계</small>
@@ -159,7 +175,9 @@ AI 모델 개발에서 데이터의 양과 질은 모델의 성능을 좌우할 
 정확도는 정확히 예측된 데이터의 수를 전체 데이터 수로 나눈 값으로, 모델의 성능을 가장 직관적으로 나타낼 수 있는 평가 지표입니다. 하지만, 이는 데이터 자체의 비대칭을 고려하지 않는다는 문제가 있습니다. 예를 들어 고용 기사 분류 모델 학습에 사용되는 데이터 전체의 90%가 고용에 관련되어 있고, 그 나머지 10%가 고용과 관련되지 않은 기사라면 데이터 자체가 더 많은 고용 기사를 분류하는 성능은 높게 나오지만, 고용과 관련되지 않은 기사를 분류하는 성능은 낮게 나올 수 있습니다. 바로 이와 같은 데이터 불균형 문제를 보완하기 위한 지표가 <strong>f1 score</strong>입니다. f1은 데이터 구조가 불균형할 때, 모델의 성능을 평가할 수 있는 지표입니다. 이번 모델들을 학습하기 위해 사용한 <u>데이터에 비대칭성이 존재하기 때문에, 모델들의 성능을 판단할 때에는 f1 score를 이용</u>하였습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/04/9.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/04/9.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0308/9.jpeg">
+<img src="/assets/img/2021/0308/9.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>표2,3,4. 감정모델 성능 비교</small>
@@ -196,4 +214,4 @@ KoELECTRA 성능 값이 대체적으로 우수하고 SKT KoBert과의 차이(0.0
 [11] <https://github.com/monologg/KoCharELECTRA><br>
 
 <pre><center><strong>[관련 포스팅 보러가기]</strong></center>
-<center><a href="https://blog.est.ai/2020/03/%eb%94%a5%eb%9f%ac%eb%8b%9d-%eb%aa%a8%eb%8d%b8-%ec%95%95%ec%b6%95-%eb%b0%a9%eb%b2%95%eb%a1%a0%ea%b3%bc-bert-%ec%95%95%ec%b6%95/"><strong>딥러닝 모델 압축 방법론과 BERT 압축</strong></a></center></pre>
+<center><a href="/2020/03/딥러닝-모델-압축-방법론과-bert-압축" target="_blank"><strong>딥러닝 모델 압축 방법론과 BERT 압축</strong></a></center></pre>

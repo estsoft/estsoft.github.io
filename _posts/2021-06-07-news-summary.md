@@ -21,9 +21,13 @@ language: kor
 안녕하세요, 오늘은 <strong>줌인터넷이 연합뉴스와 공동 개발한 AI 기반 ‘뉴스 세 줄 요약’ 서비스</strong>에 대한 연구 내용을 소개드리려고 합니다. 해당 서비스는 기사 요약 AI 기술이 국내 언론에 최초로 도입된 사례로, 현재 연합뉴스 홈페이지에서 확인할 수 있는데요. 지금부터 해당 연구 내용의 소개와 학습 데이터 구축 과정을 중점적으로 서비스 개발 과정을 설명드리겠습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/1.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0607/1.jpeg">
+<img src="/assets/img/2021/0607/1.jpeg" alt="" />
+</a>
 </center>
-<center><small>그림1. 실제 연합뉴스 홈페이지에 적용된 ‘3줄 요약’ 서비스 (출처=연합뉴스 화면 캡처)</small></center>
+<center>
+<small>그림1. 실제 연합뉴스 홈페이지에 적용된 ‘3줄 요약’ 서비스 (출처=연합뉴스 화면 캡처)</small>
+</center>
 
 <br>
 
@@ -66,7 +70,9 @@ language: kor
 태깅 툴을 제작하는 것 또한 시간과 노력을 들여야 하는 일이기 때문에 <u>초기에는 오픈 소스로 공개된 프로그램을 찾아서 활용</u>하도록 하였습니다. 인터넷상에 공개된 오픈 소스 태깅 툴도 적지 않은 수를 찾아볼 수 있는데, 쉽게 가져다 활용할 수 있는 반면 원하는 기능을 추가하기 위해서는 생각보다 많은 노력을 요구하는 경우가 많습니다. 이번 작업에서도 초기에는 <strong>오픈 소스 문서 태깅 도구인 Doccano</strong>를 설치하여 학습 데이터 생성 작업을 진행하였지만, 뉴스의 제목을 별도로 표시할 수 없는 등 필요한 기능이 충분하지 않고 사용자 인터페이스(UI)가 직관적이지 않아 뉴스 기사를 읽고 핵심 문장을 찾아 선택하여 입력하는 일련의 작업에 시간과 노력이 많이 요구된다는 문제가 있었습니다. 이러한 이유로, 보다 <u>효율적이고 정확한 데이터 생성 작업을 위해 뉴스 요약문 선정을 위한 태깅 툴을 직접 제작</u>하여 활용하게 되었습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/2.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/2.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0607/2.jpeg">
+<img src="/assets/img/2021/0607/2.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림2. Doccano 예시, 문장을 드래그로 선택하고 미리 설정해 둔 태그를 클릭함으로써 태깅을 완료한다. 제목과 본문을 분리해서 보여줄 수 없고 내용 파악 및 문장 선택이 용이하지 않아 작업 효율이 떨어지고 피로도가 크다.</small></center>
@@ -76,7 +82,9 @@ language: kor
 이렇게 뉴스 요약 문장 선별 작업에 최적화된 형태의 태깅 툴 개발을 통해 태깅 작업에 소요되는 시간을 상당히 단축시킬 수 있었고, 태깅 작업자의 만족도 또한 올라가 더 나은 품질의 학습 데이터를 구축할 수 있었습니다. 학습 데이터 생성을 위한 태깅 툴의 역할은 단순히 대상 데이터를 보여주고 태깅 정보를 입력받는 것에서 발전하여, <strong>작업자에게 더욱 적합한 정보를 제공하고 단순 반복 작업을 최소화할 수 있는 기술적 지원</strong>까지 고려되어야 합니다. 또한 데이터 태깅 작업에 필요한 도메인 지식이 서로 다른 <strong>작업자 간에 태깅 결과물의 편차가 크지 않도록 보완하는 역할</strong>도 중요합니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/3-2.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/3-2.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0607/3.jpeg">
+<img src="/assets/img/2021/0607/3.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>
@@ -92,7 +100,9 @@ language: kor
 
 실제 데이터셋을 구성하는 기사당 문장 개수 분포를 살펴보면 <strong>평균적으로 15.9문장</strong>을 가지며, <strong>최소 1문장부터 최대 156문장</strong>까지 길어질 수 있음을 볼 수 있는데요.
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/4.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/4.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0607/4.jpeg">
+<img src="/assets/img/2021/0607/4.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림4. 기사당 문장 개수 분포</small>
@@ -100,7 +110,9 @@ language: kor
 
 하지만, 두괄식으로 서술되는 기사의 특성상 <u>정답 인덱스는 10을 넘어가는 경우가 거의 없음</u>을 알 수 있습니다.
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/5.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/5.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0607/5.jpeg">
+<img src="/assets/img/2021/0607/5.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림5. 정답 문장 위치(인덱스) 분포</small>
@@ -109,7 +121,9 @@ language: kor
 WordPiece Tokenizer를 이용한 토큰화 결과 뉴스 기사를 구성하는 문장의 토큰 수 분포는 평균적으로 <strong>37.3개</strong>이며, <strong>17.4의 표준편차</strong>를 가지고 있는데요. 기사당 평균 문장 개수는 약 16개이기 때문에 문서당 평균 592개의 토큰을 가짐을 알 수 있습니다. 따라서 일반적인 트랜스포머 기반의 언어 모델을 이용하는 경우, 512개 이후의 토큰을 제거하거나 더 넓은 범위의 입력을 고려하고 싶은 경우엔 슬라이딩 윈도우 기법을 사용할 수 있습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/6.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/6.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0607/6.jpeg">
+<img src="/assets/img/2021/0607/6.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림6. 문장당 토큰 개수 분포</small>
@@ -123,7 +137,9 @@ WordPiece Tokenizer를 이용한 토큰화 결과 뉴스 기사를 구성하는 
 
 트랜스포머 기반의 프리트레인(pre-train) 모델에 요약문 포함 여부의 분류를 위한 레이어를 추가하여, 제목 토큰과 문장 토큰을 모델의 입력으로 넣었을 때 그 결과를 0과 1 사이의 값(확률)으로 출력하도록 학습시켰습니다. 이때 프리트레인 모델로는 구글의 ELECTRA를 사용했으며, 뉴스 본문을 구성하는 문장들에 대한 각 확률(스코어)를 얻고, 확률이 가장 높은 순으로 k개의 문장을 추출함으로써 요약문이 구성되도록 설계하였습니다. 자세한 모델 구현 과정은 아래 &lt;그림7>과 같습니다.
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/06/7.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/06/7.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0607/7.jpeg">
+<img src="/assets/img/2021/0607/7.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림7. 요약문 판단을 위한 요약문 여부 분류 모델</small>
@@ -145,18 +161,15 @@ WordPiece Tokenizer를 이용한 토큰화 결과 뉴스 기사를 구성하는 
 
 <br>
 
-<hr />
 
-<br>
+<h1>참고문헌</h1>
 
-<h3>참고문헌</h3>
-
-1) Get To The Point: Summarization with Pointer-Generator Networks (<https://arxiv.org/abs/1704.04368>)<br>
-2) ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators
+[1] Get To The Point: Summarization with Pointer-Generator Networks (<https://arxiv.org/abs/1704.04368>)<br>
+[2] ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators
 (<https://arxiv.org/abs/2003.10555>)<br>
-3) Extractive Summarization as Text Matching
+[3] Extractive Summarization as Text Matching
 (<https://arxiv.org/pdf/2004.08795.pdf>)
 
 <pre><center><strong>[관련 포스팅 보러가기]</strong>
-<a href="https://blog.est.ai/2021/02/fake-news/"><strong>‘가짜뉴스를 찾아라!’ 가짜뉴스 판별 특허 알아보기</strong>
-<a href="https://blog.est.ai/2019/11/%ec%85%80%eb%9f%bd-now-%eb%94%a5%eb%9f%ac%eb%8b%9d-%ea%b8%b0%eb%b0%98%ec%9d%98-%ec%97%b0%ec%98%88-%eb%89%b4%ec%8a%a4-%eb%b6%84%ec%84%9d-%ec%8b%9c%ec%8a%a4%ed%85%9c/"><strong>딥러닝 기반 연예뉴스분석시스템 개발기</strong>
+<a href="/2021/02/fake-news"><strong>‘가짜뉴스를 찾아라!’ 가짜뉴스 판별 특허 알아보기</strong>
+<a href="/2019/11/셀럽-now-딥러닝-기반의-연예-뉴스-분석-시스템"><strong>딥러닝 기반 연예뉴스분석시스템 개발기</strong>

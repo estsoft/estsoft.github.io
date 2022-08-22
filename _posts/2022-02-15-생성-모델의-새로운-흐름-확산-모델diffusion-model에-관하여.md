@@ -243,7 +243,7 @@ Probability flow ODE는 위의 SDE를 ODE(ordinary differential equations)로 �
 <br>
 <br>
 
-<h5>References</h5>
+<h1>참고문헌</h1>
 
 [1] <https://lilianweng.github.io/lil-log/2021/07/11/diffusion-models.html?fbclid=IwAR00YkyNYkNvP3ObObi02aqY95Tl-huSqfV7g2ZC1BfK7aJDTzvmEA4EBiw><br>
 [2] <https://yang-song.github.io/blog/2021/score/><br>

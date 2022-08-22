@@ -55,7 +55,9 @@ Bayesian optimization은 단순히 무작위 추출을 반복하는 것보다, �
 Bayesian optimization은 알려지지 않은 목적 함수를 최대/최소로 하는 최적해를 찾는 기법으로, <U>surrogate model과 acquisition function로 구성</U>됩니다. surrogate model은 현재까지 조사된 입력값-함숫값 점들을 바탕으로 f(x)를 추정하는 확률모델로, 보통 Gaussian Process가 주로 사용됩니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/1.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0506/1.jpeg">
+<img src="/assets/img/2021/0506/1.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림1. Bayesian optimization procedure [1]</small></center>
@@ -80,7 +82,9 @@ Exploitation은 지금까지 주어진 정보에서 최고의 선택을 하는 �
 백테스팅을 하기 위해서는 <STRONG>데이터와 프레임워크가 중요</STRONG>한데요. 본 실험에서 <U>데이터는 Finance DataReader, 백테스팅 프레임워크는 Backtrader을 선택</U>했습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-1.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-1.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0506/2.jpeg">
+<img src="/assets/img/2021/0506/2.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>finance datareader를 통해 데이터 호출</small>
@@ -91,7 +95,9 @@ Exploitation은 지금까지 주어진 정보에서 최고의 선택을 하는 �
 <strong>optuna</strong>를 선택하게 된 이유는 편리함과 확장 가능성 때문입니다. 아래 &lt;표1>에서 각 프레임워크에서 제공하는 기능별로 비교하는 표를 보면, 해당 저자는 optuna가 가장 많은 기능을 제공하고 있다고 주장하는데요. 일반적으로 hyperparameter 최적화 기법에서 많이 사용되는 프레임워크인 hyperopt에 비해, optuna를 활용하면 algorithm trading에서 필요한 dashboard와 pruning을 사용할 수 있다는 장점이 있어 최종적으로 optuna를 선택했습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-2.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환1-2.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0506/3.jpeg">
+<img src="/assets/img/2021/0506/3.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>표1. hyperparameter framework 기능 비교표 [5]</small>
@@ -99,13 +105,17 @@ Exploitation은 지금까지 주어진 정보에서 최고의 선택을 하는 �
 
 <strong>mean variance model</strong>은 자세히 설명하기에는 너무 긴 내용이기 때문에 간단히 설명하자면 기대 수익에 대해 분산으로 표시되는 위험을 평가하는 모델입니다. 주어진 포트폴리오가 있을 때, 분산 대비 최대 수익율의 조합을 구하는 방법입니다. 시장은 상황에 따라 급변하는 특성을 가지고 있기 때문에, 최근 한달을 기준으로 목적함수를 최적화하여 최근 시장에 맞는 최적의 mean variance 식을 도출하고자 아래와 같은 식을 활용하였습니다.
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/v.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/v.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0506/4.jpeg">
+<img src="/assets/img/2021/0506/4.jpeg" alt="" />
+</a>
 </center>
 
 여기서 alpha라는 hyperparameter를 통해서 수익률을 목적으로 최적화할지, 변동성을 목적으로 최적화할지, 조절이 가능한 식을 만들었습니다. 다음 백테스팅에서는 포트폴리오 리밸런싱을 한 달마다 실행했는데요. 실행하기 전에 포트폴리오 리밸런싱 당일 기준으로 <u>과거 한 달에 대해 alpha를 bayesian optimizer로 수익률을 최적화한 후, 다음 리밸런싱에 사용</u>하였습니다.
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환3.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환3.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0506/5.jpeg">
+<img src="/assets/img/2021/0506/5.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림2. Bayesian 적용 기간</small>
@@ -113,7 +123,9 @@ Exploitation은 지금까지 주어진 정보에서 최고의 선택을 하는 �
 
 이번 백테스팅에서 사용한 알고리즘은 코스피 30개 종목을 균등하게 매수하는 <strong>1/n porfolio</strong>, 위에 설명한 <strong>mean variance model</strong>과 bayesian optimization 기법으로 과거 1달의 수익률을 최적화한 mean variance model(<strong>bayesian mean variance model</strong>) 입니다. 이 3가지 알고리즘 모두 월 단위 기준으로 종목들의 비중을 조절하는 portfolio rebalancing을 진행했습니다.
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환4.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환4.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0506/6.jpeg">
+<img src="/assets/img/2021/0506/6.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>Optuna objective function</small>
@@ -139,21 +151,27 @@ monthly rebalancing
 
 아래의 &lt;표2>는 <strong>pyfolio</strong>라는 성과분석 도구를 사용하여 분석한 결과이며, &lt;표2>와 &lt;그림3> 각각은 3가지 모델(1/n portfolio model, mean variance model, bayesian mean variance model)의 성과를 보여주고 있습니다. 여기서 bayesian mean variance model은 mean variance model과 bayesian optimization을 통해 hyperparameter를 최적화한 모델입니다.
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/p.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/p.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0506/7.jpeg">
+<img src="/assets/img/2021/0506/7.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>pyfolio 분석 함수</small>
 </center>
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/7.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/7.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0506/8.jpeg">
+<img src="/assets/img/2021/0506/8.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>표2. 각 모델별 성과 분석 비교</small>
 </center>
 
 <center>
-<a class="wp-editor-md-post-content-link" href="https://blog.est.ai/wp-content/uploads/2021/05/크기변환8.jpg"><img src="https://blog.est.ai/wp-content/uploads/2021/05/크기변환8.jpg" alt="" /></a>
+<a class="wp-editor-md-post-content-link" href="/assets/img/2021/0506/9.jpeg">
+<img src="/assets/img/2021/0506/9.jpeg" alt="" />
+</a>
 </center>
 <center>
 <small>그림3. 누적 수익률</small>
@@ -169,7 +187,7 @@ monthly rebalancing
 
 <br>
 
-<h1>reference</h1>
+<h1>참고문헌</h1>
 
 [1] B. Shahriari, K. Swersky, Z. Wang, R. P. Adams and N. de Freitas, "Taking the Human Out of the Loop: A Review of Bayesian Optimization," in Proceedings of the IEEE, vol. 104, no. 1, pp. 148-175, Jan. 2016, doi: 10.1109/JPROC.2015.2494218.<br/>
 [2] Bergstra, James, and Yoshua Bengio. "Random search for hyper-parameter optimization." Journal of machine learning research 13.2 (2012).<br/>
