@@ -22,9 +22,11 @@ language: kor
 이 시점 이후, 이미지 인식에 딥러닝을 쓰는 것은 필수가 되었고 학계에서만 연구되던 딥러닝이 산업에 본격적으로 쓰이기 시작하였다. <span style="text-decoration: underline;">특히, 인공지능이 우리의 삶을 바꿀 수 있다는 기대감이 뿌리내리는 계기가 되었다.</span></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:separator -->
-<hr class="wp-block-separator"/>
-<!-- /wp:separator -->
+<br>
+
+<hr />
+
+<br>
 
 <!-- wp:heading -->
 <h2><strong><em>BERT란 무엇인가?&nbsp;</em></strong></h2>
@@ -35,7 +37,8 @@ language: kor
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"align":"wide"} -->
-<figure class="wp-block-image alignwide"><img src="https://lh5.googleusercontent.com/t_aeAWQQcvcNTlR7ZfgVFsDypwraQ1cIJnVNv07gEm_qs-vswuPMAzbfdaW1JD3HiU0-0vNNHYlNNhJvRa-xiZZ-wwO9aVvrOkskdJmGdSOhjwKYu8MmAWVGRmY10NdVtolMgXZ5" alt=""/><figcaption> 그림 1. GLUE Benchmark [2] </figcaption></figure>
+<!-- TODO: 이미지 경로 오류 -->
+<!-- <figure class="wp-block-image alignwide"><img src="https://lh5.googleusercontent.com/t_aeAWQQcvcNTlR7ZfgVFsDypwraQ1cIJnVNv07gEm_qs-vswuPMAzbfdaW1JD3HiU0-0vNNHYlNNhJvRa-xiZZ-wwO9aVvrOkskdJmGdSOhjwKYu8MmAWVGRmY10NdVtolMgXZ5" alt=""/><figcaption> 그림 1. GLUE Benchmark [2] </figcaption></figure> -->
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
@@ -43,12 +46,12 @@ language: kor
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":228,"align":"wide"} -->
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어3-1024x581.jpg" alt="" class="wp-image-228"/><figcaption> 그림 2. BERT 학습 과정 [5] </figcaption></figure>
+<center>
+<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어3-1024x581.jpg" alt="" class="wp-image-228"/><figcaption><small>그림 2. BERT 학습 과정 [5]</small></figcaption></figure>
+</center>
 <!-- /wp:image -->
 
-<!-- wp:separator -->
-<hr class="wp-block-separator"/>
-<!-- /wp:separator -->
+<br/>
 
 <!-- wp:heading -->
 <h2><strong><em>챗봇에서의 머신러닝 활용</em></strong><br></h2>
@@ -63,7 +66,9 @@ language: kor
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":229,"align":"wide"} -->
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어2-1024x509.jpg" alt="" class="wp-image-229"/><figcaption> 그림 3. 기능수행 챗봇의 전체 흐름도 [6] </figcaption></figure>
+<center>
+<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어2-1024x509.jpg" alt="" class="wp-image-229"/><figcaption><small>그림 3. 기능수행 챗봇의 전체 흐름도 [6]</small></figcaption></figure>
+</center>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
@@ -74,9 +79,7 @@ language: kor
 <p>여기서 몇가지 문제가 생기는데, 하나는 챗봇이 어떤 유형의 문장들을 인식하여야 하는지, 즉, &lt;택시호출, 목적지, 예술의 전당&gt;, &lt;레스토랑-예약, 지역, 강남구&gt; 등을 미리 정의해놓아야 한다는 것이다. 이를 정의한 문서를 Ontology라고 하는데, 문제는 이것이 서비스 중에 업데이트 될 수 있다는 것이다. 원래는 서울 이외의 지역을 가지 않기로 한 택시호출 서비스가 어느날 경기도까지 서비스하기로 결정하였다면, &lt;택시호출, 목적지, 정자역&gt;에 해당하는 문장도 인식해야한다. 근데 그러려면 이에 해당하는 문장을 다시 준비를 해서 학습을 해야하기때문에 업데이트를 하는데 시간이 꽤 걸리게 된다. 더욱이 목적지에 해당하는 값은 매우 많으므로 (예술의 전당, 정자역, 시청, 용산역, 검찰청, ...) 각각의 조합에 각각의 분류 모델을 따로 학습해서 서비스를 하는 것은 각각의 데이터를 따로 구해야 하는 어려움이 있으며, 학습/추론 시간도 매우 오래 걸릴수가 있다. <span style="text-decoration: underline;">즉, 기존의 시스템은 확장성(scalability)이 떨어진다고 할 수 있다 [7].</span></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:separator -->
-<hr class="wp-block-separator"/>
-<!-- /wp:separator -->
+<br/>
 
 <!-- wp:heading -->
 <h2><strong><em>BERT를 활용한 확장성있는 챗봇만들기</em></strong><br></h2>
@@ -87,16 +90,16 @@ language: kor
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":240,"align":"wide"} -->
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어1-1-1024x438.jpg" alt="" class="wp-image-240"/><figcaption> 그림 3. BERT를 활용한 Dialog State Tracking [8] </figcaption></figure>
+<center>
+<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어1-1-1024x438.jpg" alt="" class="wp-image-240"/><figcaption><small>그림 3. BERT를 활용한 Dialog State Tracking [8]</small></figcaption></figure>
+</center>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
 <p>이렇게 되면 최소한 Slot의 Value들을 미리 알고 있지 않아도 된다. 즉, &lt;택시호출, 목적지, 예술의 전당&gt;에서 "예술의전당"이라는 목적지는 미리 알지 못해도 사용자의 얘기에서 추출할 수가 있으므로, &lt;택시호출, 목적지&gt;에 해당하는 모듈만 따로 학습해놓으면 된다. 이는 서울 지역만 가는 택시호출 서비스가 설령 서울 이외의 지역으로 가게 되었다 하더라도, 새로 시스템을 업데이트할 필요가 없다는 것을 뜻한다. 이 모델은 Slot Value들을 미리 알지 못한 상태에서 동작함에도 불구하고, WOZ 2.0 데이터셋에서 최고 성능에 가까운 성능을 얻어서 BERT의 강력함을 보여주었다.&nbsp;</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:separator -->
-<hr class="wp-block-separator"/>
-<!-- /wp:separator -->
+<br/>
 
 <!-- wp:heading -->
 <h2><strong><em>처음보는 서비스도 처리할 수 있는 챗봇</em></strong><br></h2>
@@ -111,7 +114,9 @@ language: kor
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":243,"align":"wide"} -->
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어5-1024x283.jpg" alt="" class="wp-image-243"/><figcaption> 그림 4. Intent와 Slot의 의미가 매우 비슷한 두 항공예약 서비스 [9] </figcaption></figure>
+<center>
+<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어5-1024x283.jpg" alt="" class="wp-image-243"/><figcaption><small>그림 4. Intent와 Slot의 의미가 매우 비슷한 두 항공예약 서비스 [9]</small></figcaption></figure>
+</center>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
@@ -122,9 +127,7 @@ language: kor
 <p>Slot의 경우도 마찬가지인데, origin과 depart, destination과 arrive는 사실 같은 의미이므로 각각 설명들에 대한 BERT의 출력(embedding)을 이용하면 이들이 같은 의미를 가진다는 것을 알 수 있고, 아시아나 서비스에 대한 학습은 전혀 없는 상태에서도 대한항공만큼의 인식률을 바로 얻을 수 있을 것이다.&nbsp; 이는 각 Intent혹은 Slot에 대한 설명(Description)을 BERT에 입력해 얻은 Vector를 앞에서 언급한 Slot Value Span Prediction에 같이 사용함으로써 가능하다. 구글은 이 모델을 통해 학습 데이터셋에 존재하지 않는 Unseen Service에 대해서도 높은 인식률을 얻었다.&nbsp; </p>
 <!-- /wp:paragraph -->
 
-<!-- wp:separator -->
-<hr class="wp-block-separator"/>
-<!-- /wp:separator -->
+<br/>
 
 <!-- wp:heading -->
 <h2><strong><em>챗봇의 미래</em></strong><br></h2>
@@ -134,9 +137,7 @@ language: kor
 <p>사실 현재의 챗봇은 정말 사람처럼 대화하는 수준에는 전혀 미치지 못하고 있어, 큰 기대감에도 불구하고 그 활용성이 매우 제한되고 있다. 그렇다면 과연 BERT가 챗봇 업계의 구세주가 될 수 있을까? 물론 BERT가 기존 모델대비 강력한 자연어 이해 능력으로 이후에도 챗봇에 크게 기여할 것으로 보인다. 하지만 챗봇이 사람처럼 미묘한 맥락을 파악해서 다양하고 풍부한 대화를 할 수 있으려면, 아직도 많은 혁신이 필요해보인다. BERT는 그 첫 걸음일 뿐이다. 향후 어떠한 혁신이 또&nbsp; 이루어질지 설레는 마음으로 지켜보려 한다.&nbsp;</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:separator -->
-<hr class="wp-block-separator"/>
-<!-- /wp:separator -->
+<br/>
 
 <!-- wp:heading -->
 <h2><em><strong>Reference</strong></em></h2>
