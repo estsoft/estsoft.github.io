@@ -34,7 +34,11 @@ language: kor
 
 <!-- wp:image {"id":288,"align":"center"} -->
 <center>
-<div class="wp-block-image"><figure class="aligncenter"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림17.-글라스파인더-앱-캡쳐화면-1024x803.jpg" alt="" class="wp-image-288"/><figcaption><small>그림1. 글라스파인더 소개 이미지</small></figcaption></figure></div>
+<div class="wp-block-image"><figure class="aligncenter">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/1.jpeg">
+<img src="/assets/img/2019/1104/1.jpeg" alt="" />
+</a>
+<figcaption><small>그림1. 글라스파인더 소개 이미지</small></figcaption></figure></div>
 </center>
 <!-- /wp:image -->
 
@@ -56,7 +60,11 @@ language: kor
 
 <!-- wp:image {"id":289,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림1.-기획의도-1-1024x577.jpg" alt="" class="wp-image-289"/><figcaption><small>그림2. 기획의도</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/2.jpeg">
+<img src="/assets/img/2019/1104/2.jpeg" alt="" />
+</a>
+<figcaption><small>그림2. 기획의도</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -66,7 +74,11 @@ language: kor
 
 <!-- wp:image {"id":290,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림2.-사용자-관점에서의-활용-예-1024x794.jpg" alt="" class="wp-image-290"/><figcaption><small>그림3. 사용자 관점에서의 활용 예</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/3.jpeg">
+<img src="/assets/img/2019/1104/3.jpeg" alt="" />
+</a>
+<figcaption><small>그림3. 사용자 관점에서의 활용 예</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -124,13 +136,21 @@ language: kor
 
 <!-- wp:image {"id":291,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림3.-결과값이-나와야-하는-이미지-예시-1024x665.jpg" alt="" class="wp-image-291"/><figcaption><small>그림4.&nbsp;결과값이 나와야 하는 이미지 예시</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/4.jpeg">
+<img src="/assets/img/2019/1104/4.jpeg" alt="" />
+</a>
+<figcaption><small>그림4.&nbsp;결과값이 나와야 하는 이미지 예시</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
 <!-- wp:image {"id":293,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림4.-결과값이-나오지-않아도-되는-이미지-예시-1024x642.jpg" alt="" class="wp-image-293"/><figcaption><small>그림5. 결과값이 나오지 않아도 되는 이미지 예시</small> </figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/5.jpeg">
+<img src="/assets/img/2019/1104/5.jpeg" alt="" />
+</a>
+<figcaption><small>그림5. 결과값이 나오지 않아도 되는 이미지 예시</small> </figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -144,7 +164,11 @@ language: kor
 
 <!-- wp:image {"id":292,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림2.얼럿창_22-1024x751.jpg" alt="" class="wp-image-292"/><figcaption><small>그림6. 안경/선글라스 외 물체 촬영 시, Alert 화면</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/6.jpeg">
+<img src="/assets/img/2019/1104/6.jpeg" alt="" />
+</a>
+<figcaption><small>그림6. 안경/선글라스 외 물체 촬영 시, Alert 화면</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -170,7 +194,11 @@ language: kor
 
 <!-- wp:image {"id":294,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림7.-데이터-흐름도-1024x391.jpg" alt="" class="wp-image-294"/><figcaption><small>그림7. 데이터 흐름도</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/7.jpeg">
+<img src="/assets/img/2019/1104/7.jpeg" alt="" />
+</a>
+<figcaption><small>그림7. 데이터 흐름도</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -204,7 +232,12 @@ language: kor
 
 <!-- wp:image {"id":296,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림8.-얼굴-탐지-문제-관련-기술들-1024x646.jpg" alt="" class="wp-image-296"/><figcaption><small>그림8. 얼굴 탐지 문제 관련 기술들</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/8.jpeg">
+<img src="/assets/img/2019/1104/8.jpeg" alt="" />
+</a>
+<figcaption>
+<small>그림8. 얼굴 탐지 문제 관련 기술들</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -226,7 +259,11 @@ language: kor
 
 <!-- wp:image {"id":297,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림9.-얼굴-정렬-관련-기술들-1024x646.jpg" alt="" class="wp-image-297"/><figcaption><small>그림9. 얼굴 정렬 관련 기술들</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/9.jpeg">
+<img src="/assets/img/2019/1104/9.jpeg" alt="" />
+</a>
+<figcaption><small>그림9. 얼굴 정렬 관련 기술들</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -264,7 +301,11 @@ language: kor
 
 <!-- wp:image {"id":336,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림10.-closed-set과-open-set의-비교_텍스트수정-1024x915.jpg" alt="" class="wp-image-336"/><figcaption><small>그림10. closed-set 과 open-set의 비교 [4]</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/10.jpeg">
+<img src="/assets/img/2019/1104/10.jpeg" alt="" />
+</a>
+<figcaption><small>그림10. closed-set 과 open-set의 비교 [4]</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -302,13 +343,21 @@ language: kor
 
 <!-- wp:image {"id":299,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림11.-모델-평가용-질의데이터-1024x644.jpg" alt="" class="wp-image-299"/><figcaption><small>그림11. 모델 평가용 쿼리 데이터</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/11.jpeg">
+<img src="/assets/img/2019/1104/11.jpeg" alt="" />
+</a>
+<figcaption><small>그림11. 모델 평가용 쿼리 데이터</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
 <!-- wp:image {"id":300,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림12.-모델-평가용-등록-데이터-1024x644.jpg" alt="" class="wp-image-300"/><figcaption><small>그림12. 모델 평가용 등록 데이터</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/12.jpeg">
+<img src="/assets/img/2019/1104/12.jpeg" alt="" />
+</a>
+<figcaption><small>그림12. 모델 평가용 등록 데이터</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -322,7 +371,11 @@ language: kor
 
 <!-- wp:image {"id":301,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림13.-서비스-중인-라운즈앱의-가상안경착용-합성-이미지-예시-1024x535.jpg" alt="" class="wp-image-301"/><figcaption><small>그림13. 라운즈앱을 통해 생성한 안경 가상 착용 이미지 예시</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/13.jpeg">
+<img src="/assets/img/2019/1104/13.jpeg" alt="" />
+</a>
+<figcaption><small>그림13. 라운즈앱을 통해 생성한 안경 가상 착용 이미지 예시</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -340,7 +393,11 @@ language: kor
 
 <!-- wp:image {"id":302,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림14.-훈련에-사용된-가상안경착용-합성-이미지-1024x285.jpg" alt="" class="wp-image-302"/><figcaption><small>그림 14. 훈련에 사용된 가상 안경 착용 합성 이미지 예시</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/14.jpeg">
+<img src="/assets/img/2019/1104/14.jpeg" alt="" />
+</a>
+<figcaption><small>그림 14. 훈련에 사용된 가상 안경 착용 합성 이미지 예시</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -366,13 +423,20 @@ language: kor
 
 <!-- wp:image {"id":303,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림15.-top-N-정확도-1024x553.jpg" alt="" class="wp-image-303"/><figcaption><small>그림15. top-N 정확도</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/15.jpeg">
+<img src="/assets/img/2019/1104/15.jpeg" alt="" />
+</a>
+<figcaption><small>그림15. top-N 정확도</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
 <!-- wp:image {"id":422,"align":"full"} -->
 <center>
-<figure class="wp-block-image alignfull"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림16.-모델-평가-테스트-페이지-1-1024x576.png" alt="" class="wp-image-422"/>
+<figure class="wp-block-image alignfull">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1104/16.png">
+<img src="/assets/img/2019/1104/16.png" alt="" />
+</a>
 <figcaption><small>그림16. 모델 평가 테스트 페이지</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
@@ -382,7 +446,7 @@ language: kor
 <!-- /wp:spacer -->
 
 <!-- wp:heading -->
-<h2><strong>7. 참고문헌</strong></h2>
+<h1>참고문헌</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
