@@ -38,7 +38,10 @@ language: kor
 
 <!-- wp:image {"align":"wide"} -->
 <!-- TODO: 이미지 경로 오류 -->
-<!-- <figure class="wp-block-image alignwide"><img src="https://lh5.googleusercontent.com/t_aeAWQQcvcNTlR7ZfgVFsDypwraQ1cIJnVNv07gEm_qs-vswuPMAzbfdaW1JD3HiU0-0vNNHYlNNhJvRa-xiZZ-wwO9aVvrOkskdJmGdSOhjwKYu8MmAWVGRmY10NdVtolMgXZ5" alt=""/><figcaption> 그림 1. GLUE Benchmark [2] </figcaption></figure> -->
+<center>
+<figure class="wp-block-image alignwide"><img src="https://lh5.googleusercontent.com/t_aeAWQQcvcNTlR7ZfgVFsDypwraQ1cIJnVNv07gEm_qs-vswuPMAzbfdaW1JD3HiU0-0vNNHYlNNhJvRa-xiZZ-wwO9aVvrOkskdJmGdSOhjwKYu8MmAWVGRmY10NdVtolMgXZ5" alt=""/>
+<figcaption><small>그림 1. GLUE Benchmark [2]</small></figcaption></figure>
+</center>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
@@ -47,7 +50,11 @@ language: kor
 
 <!-- wp:image {"id":228,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어3-1024x581.jpg" alt="" class="wp-image-228"/><figcaption><small>그림 2. BERT 학습 과정 [5]</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1102/2.jpeg">
+<img src="/assets/img/2019/1102/2.jpeg" alt="" />
+</a>
+<figcaption><small>그림 2. BERT 학습 과정 [5]</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -67,7 +74,11 @@ language: kor
 
 <!-- wp:image {"id":229,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어2-1024x509.jpg" alt="" class="wp-image-229"/><figcaption><small>그림 3. 기능수행 챗봇의 전체 흐름도 [6]</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1102/3.jpeg">
+<img src="/assets/img/2019/1102/3.jpeg" alt="" />
+</a>
+<figcaption><small>그림 3. 기능수행 챗봇의 전체 흐름도 [6]</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -91,7 +102,11 @@ language: kor
 
 <!-- wp:image {"id":240,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어1-1-1024x438.jpg" alt="" class="wp-image-240"/><figcaption><small>그림 3. BERT를 활용한 Dialog State Tracking [8]</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1102/4.jpeg">
+<img src="/assets/img/2019/1102/4.jpeg" alt="" />
+</a>
+<figcaption><small>그림 3. BERT를 활용한 Dialog State Tracking [8]</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -115,7 +130,11 @@ language: kor
 
 <!-- wp:image {"id":243,"align":"wide"} -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://blog.est.ai/wp-content/uploads/2019/11/그림-1.-자연어5-1024x283.jpg" alt="" class="wp-image-243"/><figcaption><small>그림 4. Intent와 Slot의 의미가 매우 비슷한 두 항공예약 서비스 [9]</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<a class="wp-editor-md-post-content-link" href="/assets/img/2019/1102/5.jpeg">
+<img src="/assets/img/2019/1102/5.jpeg" alt="" />
+</a>
+<figcaption><small>그림 4. Intent와 Slot의 의미가 매우 비슷한 두 항공예약 서비스 [9]</small></figcaption></figure>
 </center>
 <!-- /wp:image -->
 
@@ -140,7 +159,7 @@ language: kor
 <br/>
 
 <!-- wp:heading -->
-<h2><em><strong>Reference</strong></em></h2>
+<h1>참고문헌</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
