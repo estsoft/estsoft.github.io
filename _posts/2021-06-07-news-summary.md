@@ -1,19 +1,15 @@
 ---
 layout: post
 title: AI 기반 뉴스 3줄 요약 서비스 개발기
-subtitle:
 tags: [3줄요약, AI, AIPLUS, zum, zum.com, 뉴스요약, 세줄요약, 연합뉴스, 줌닷컴, 줌인터넷]
 cover-img:
-thumbnail-img:
 comments: true
 share-title: AI 기반 뉴스 3줄 요약 서비스 개발기
 share-description: 줌인터넷이 연합뉴스와 공동 개발한 AI 기반 ‘뉴스 세 줄 요약’ 서비스에 대한 연구 내용 관련 글
 share-img: 
 readtime: true
-last-updated:
-gh-repo:
-gh-badge:
 language: kor
+use_math: true
 ---
 
 <h1>“기사를 단 3줄로 요약해주는 AI”</h1>

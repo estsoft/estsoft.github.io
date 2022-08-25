@@ -47,18 +47,13 @@ md_name="_posts/$create_date-$parseTitle.md"
 echo "---" > $md_name
 echo "layout : post" >> $md_name
 echo "title: $title" >> $md_name
-echo "subtitle:" >> $md_name
 echo "tags: []" >> $md_name
 echo "cover-img:" >> $md_name
-echo "thumbnail-img:" >> $md_name
 echo "comments: true" >> $md_name
 echo "share-title:" >> $md_name
 echo "share-description:" >> $md_name
 echo "share-img:" >> $md_name
 echo "readtime: true" >> $md_name
-echo "last-updated:" >> $md_name
-echo "gh-repo:" >> $md_name
-echo "gh-badge:" >> $md_name
 echo "language: kor" >> $md_name
 echo "use_math: true" >> $md_name
 echo "---" >> $md_name

@@ -1,19 +1,15 @@
 ---
 layout: post
 title: AI를 활용한 고용률 예측 모델 개발기(1)
-subtitle:
 tags: [AI, bert, ELECTRA, multimodal, 고용률예측, 고용률예측모델, 머신러닝, 멀티모달, 이스트소프트, 인공지능]
 cover-img:
-thumbnail-img:
 comments: true
 share-title: AI를 활용한 고용률 예측 모델 개발기(1)
 share-description: 고용률 예측 모델의 개발 과정 관련 글
 share-img: 
 readtime: true
-last-updated:
-gh-repo:
-gh-badge:
 language: kor
+use_math: true
 ---
 
 안녕하세요, AI PLUS Tech Blog입니다. 오늘은 이스트소프트에서 개발한 <strong>고용률 예측 모델의 개발 과정</strong>을 소개드리려고 합니다. 지난해 이스트소프트 A.I. PLUS Lab의 NLP 파트에서는 <u>뉴스 정보를 기반으로 한 고용률 예측 모델을 연구</u>하였습니다.
