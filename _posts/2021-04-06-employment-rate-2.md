@@ -1,19 +1,15 @@
 ---
 layout: post
 title: AI를 활용한 고용률 예측 모델 개발기(2)
-subtitle:
 tags: [AI, TRANSFOMER, 고용률, 고용률예측, 고용률예측모델, 머신러닝, 시계열, 시계열예측, 이스트소프트, 인공지능]
 cover-img:
-thumbnail-img:
 comments: true
 share-title: AI를 활용한 고용률 예측 모델 개발기(2)
 share-description: 고용률 예측 모델의 개발 과정 관련 글
 share-img: 
 readtime: true
-last-updated:
-gh-repo:
-gh-badge:
 language: kor
+use_math: true
 ---
 
 안녕하세요, AI PLUS Tech Blog입니다. 오늘은 지난달 소개드린 <strong>고용률 예측 모델의 개발 과정</strong>을 이어 설명드리려고 합니다.

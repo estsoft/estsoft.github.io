@@ -1,19 +1,15 @@
 ---
 layout: post
 title: 생성 모델의 새로운 흐름 확산 모델(Diffusion model)에 관하여
-subtitle:
 tags: [AI, 딥러닝, 생성모델, 이스트소프트, 인공지능, 확산모델]
 cover-img:
-thumbnail-img:
 comments: true
 share-title: 생성 모델의 새로운 흐름 확산 모델(Diffusion model)에 관하여
 share-description: 인공지능 확산(diffusion) 모델 글
 share-img: 
 readtime: true
-last-updated:
-gh-repo:
-gh-badge:
 language: kor
+use_math: true
 ---
 
 안녕하세요, AI PLUS Tech Blog입니다. <br>오늘은 생성 모델에 새로 등장하여 뛰어난 성능으로 현재  많은 주목을 받고 있는 <strong>확산(diffusion) 모델</strong>에 대해 이야기하려고 합니다.

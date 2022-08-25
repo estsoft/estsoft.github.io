@@ -1,19 +1,15 @@
 ---
 layout: post
 title: bayesian optimization in trading
-subtitle:
 tags: [AI, AIPLUS, algorithm, bayesian, bayesian optimization, trading, 베이지안최적화, 알고리즘트레이딩, 이스트소프트, 인공지능]
 cover-img:
-thumbnail-img:
 comments: true
 share-title: bayesian optimization in trading
 share-description: ‘베이지안 최적화(bayesian optimization)’를 알고리즘 트레이딩 관련 글
 share-img: 
 readtime: true
-last-updated:
-gh-repo:
-gh-badge:
 language: kor
+use_math: true
 ---
 
 AI는 인공신경망의 등장부터 두 번의 AI 겨울이 지난 현재까지 많은 산업의 패러다임을 바꿔나가고 있습니다. 특히 금융시장에서는 AI의 잠재력을 높게 평가하고, 현재 시장 트렌드 분석, 미래 시장 변화 예측 등을 위한 최적의 예측 모델을 연구하고 있는데요.

@@ -1,19 +1,15 @@
 ---
 layout: post
 title: BERT를 활용한 챗봇 시스템
-subtitle:
 tags: [AI, AI연구, AI연구동향, bert, 딥러닝, 연구동향, 이스트소프트, 인공지능, 챗봇]
 cover-img:
-thumbnail-img:
 comments: true
 share-title: BERT를 활용한 챗봇 시스템
 share-description: BERT를 활용한 챗봇 시스템 내용 관련 글
 share-img: 
 readtime: true
-last-updated:
-gh-repo:
-gh-badge:
 language: kor
+use_math: true
 ---
 
 <!-- wp:paragraph -->

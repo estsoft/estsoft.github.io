@@ -1,19 +1,15 @@
 ---
 layout: post
 title: 메트릭러닝 기반 안경 검색 서비스 개발기(1)
-subtitle:
 tags: [AI, AI가상피팅, AR피팅, Metric Learning, ROUNZ, 가상피팅, 개발기, 라운즈, 메트릭러닝, 상품검색, 서비스개발기, 선글라스검색, 안경검색, 이스트소프트, 인공지능]
 cover-img:
-thumbnail-img:
 comments: true
 share-title: 메트릭러닝 기반 안경 검색 서비스 개발기(1)
 share-description:  Glass Finder의 개발 요구사항(Requirements Specification) 정리, 전반적인 시스템 구성, 관련 개념들에 대한 개략적인 내용 관련 글
 share-img: 
 readtime: true
-last-updated:
-gh-repo:
-gh-badge:
 language: kor
+use_math: true
 ---
 
 <!-- wp:quote -->
