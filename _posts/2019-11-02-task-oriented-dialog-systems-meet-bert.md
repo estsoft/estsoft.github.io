@@ -39,8 +39,11 @@ language: kor
 <!-- wp:image {"align":"wide"} -->
 <!-- TODO: 이미지 경로 오류 -->
 <center>
-<figure class="wp-block-image alignwide"><img src="https://lh5.googleusercontent.com/t_aeAWQQcvcNTlR7ZfgVFsDypwraQ1cIJnVNv07gEm_qs-vswuPMAzbfdaW1JD3HiU0-0vNNHYlNNhJvRa-xiZZ-wwO9aVvrOkskdJmGdSOhjwKYu8MmAWVGRmY10NdVtolMgXZ5" alt=""/>
-<figcaption><small>그림 1. GLUE Benchmark [2]</small></figcaption></figure>
+<figure class="wp-block-image alignwide">
+<img src="https://lh5.googleusercontent.com/t_aeAWQQcvcNTlR7ZfgVFsDypwraQ1cIJnVNv07gEm_qs-vswuPMAzbfdaW1JD3HiU0-0vNNHYlNNhJvRa-xiZZ-wwO9aVvrOkskdJmGdSOhjwKYu8MmAWVGRmY10NdVtolMgXZ5" alt=""/>
+<figcaption>
+<small>그림 1. GLUE Benchmark [2]</small>
+</figcaption></figure>
 </center>
 <!-- /wp:image -->
 
