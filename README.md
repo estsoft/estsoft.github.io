@@ -6,6 +6,7 @@ ESTsoft Tech Blog 입니다.
 
 ## Quicklinks
 * [Getting Started](#getting-started)
+    * [Contents](#contents)
     * [Issues](#issues)
     * [Pull Requests](#pull-requests)
 * [Markdown form Description](#markdown-form-description)
@@ -13,12 +14,16 @@ ESTsoft Tech Blog 입니다.
 
 ## Getting Started
 
+git flow?
+forking flow?
 ### Contents 글쓰기
 1. 
 2. 
 ### Issues 올리기
 1. 
 2. 
+
+
 
 ### Pull Requests 신청하기
 1. 
