@@ -49,6 +49,9 @@ layout: base
           {% for tag in page.tags %}
             <a href="{{ '/tags' | relative_url }}#{{- tag -}}">#{{- tag -}}</a>
           {% endfor %}
+          <!-- {% for tag in page.tags %}
+            #{{- tag -}}
+          {% endfor %} -->
         </div>
       {% endif %}
 
