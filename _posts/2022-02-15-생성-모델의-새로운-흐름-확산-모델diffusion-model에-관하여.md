@@ -7,7 +7,8 @@ comments: true
 share-title: 생성 모델의 새로운 흐름 확산 모델(Diffusion model)에 관하여
 share-description: 인공지능 확산(diffusion) 모델 글
 share-img: 
-readtime: true
+readtime: false
+author: 
 language: kor
 use_math: true
 ---

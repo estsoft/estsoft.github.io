@@ -7,7 +7,8 @@ comments: true
 share-title: BERT를 활용한 챗봇 시스템
 share-description: BERT를 활용한 챗봇 시스템 내용 관련 글
 share-img: 
-readtime: true
+readtime: false
+author: 
 language: kor
 use_math: true
 ---
