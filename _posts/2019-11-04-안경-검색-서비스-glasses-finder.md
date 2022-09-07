@@ -7,7 +7,8 @@ comments: true
 share-title: 메트릭러닝 기반 안경 검색 서비스 개발기(1)
 share-description:  Glass Finder의 개발 요구사항(Requirements Specification) 정리, 전반적인 시스템 구성, 관련 개념들에 대한 개략적인 내용 관련 글
 share-img: 
-readtime: true
+readtime: false
+author: 
 language: kor
 use_math: true
 ---

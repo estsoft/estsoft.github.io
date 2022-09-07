@@ -73,6 +73,9 @@
 
           {% if include.type == "post" %}
             <span class="post-meta">{{ page.date | date: date_format }}</span>
+            {% if page.author %}
+              <span class="post-author">| 작성자: {{ page.author }}</span>
+            {% endif %}
             {% if page.last-updated %}
               <span class="post-meta">
                 <span class="d-none d-md-inline middot">&middot;</span>
@@ -82,6 +85,19 @@
             {% if page.readtime %}
               {% include readtime.html %}
             {% endif %}
+          {% endif %}
+          {% if site.feed_show_tags != false and page.tags.size > 0 %}
+            <div class="blog-tags">
+              <ul class="d-inline list-inline" role="list">
+                {% for tag in page.tags %}
+                  {% if forloop.index < 6 %}
+                  <li class="list-inline-item">
+                    <a href="{{ '/tags' | absolute_url }}#{{- tag -}}">#{{- tag -}}</a>
+                  </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
           {% endif %}
         </div>
       </div>

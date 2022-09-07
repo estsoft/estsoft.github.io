@@ -7,7 +7,8 @@ comments: true
 share-title: AI를 활용한 고용률 예측 모델 개발기(2)
 share-description: 고용률 예측 모델의 개발 과정 관련 글
 share-img: 
-readtime: true
+readtime: false
+author: 
 language: kor
 use_math: true
 ---

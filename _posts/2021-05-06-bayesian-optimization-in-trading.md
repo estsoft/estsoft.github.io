@@ -7,7 +7,8 @@ comments: true
 share-title: bayesian optimization in trading
 share-description: ‘베이지안 최적화(bayesian optimization)’를 알고리즘 트레이딩 관련 글
 share-img: 
-readtime: true
+readtime: false
+author: 
 language: kor
 use_math: true
 ---

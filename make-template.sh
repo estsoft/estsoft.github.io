@@ -1,5 +1,7 @@
 printf "문서명. : "
 read title
+printf "작성자. : "
+read author
 # printf "Subtitle : "
 # read subtitle
 # printf "태그들(ex: AI 시계열분석 인공지능) 한칸씩 띄워서 작성해주세요. : "
@@ -53,7 +55,8 @@ echo "comments: true" >> $md_name
 echo "share-title:" >> $md_name
 echo "share-description:" >> $md_name
 echo "share-img:" >> $md_name
-echo "readtime: true" >> $md_name
+echo "readtime: false" >> $md_name
+echo "author: $author" >> $md_name
 echo "language: kor" >> $md_name
 echo "use_math: true" >> $md_name
 echo "---" >> $md_name
