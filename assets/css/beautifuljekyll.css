@@ -1151,3 +1151,57 @@ pre {
     display: inline-block;
   }
 }
+
+.error .logo_estsoft_tech {
+  display: block;
+  width: 114px;
+  height: 22px;
+  background: url(../img/logo_estsoft_tech.png) 0 0 / 100% auto no-repeat;
+  margin: 150px auto 0;
+}
+.error h1 {
+  font-size: 27px;
+  line-height: 1.3;
+  color: #000;
+}
+.error h1 span{
+  color: #FF4135;
+}
+.error .btn_main{
+  display: block;
+  width: 200px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+  color: #fff;
+  background: #0047FF;
+  margin: 0 auto;
+}
+.error .btn_main:hover{
+  text-decoration: none;
+}
+.error em{
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.6;
+  font-style: normal;
+  color: #AEAEAE;
+  margin-top: 88px;
+}
+@media (min-width: 768px) {
+  .error br{
+    display: none;
+  }
+  .error h1 {
+    font-size: 30px;
+    margin: 54px 0 0;
+  }
+  .error p{
+    width: 420px;
+    margin: 34px auto 50px;
+  }
+  .error em{
+    margin-top: 100px;
+  }
+}
