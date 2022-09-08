@@ -668,12 +668,13 @@ footer .footer-custom-content {
 }
 
 .post-preview .blog-tags {
-  overflow-x: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
   color: #AEAEAE;
   margin-top: 10px;
   margin-bottom: 0;
+  isolation: isolate;
 }
 
 @media (min-width: 768px) {
@@ -1152,6 +1153,9 @@ pre {
   outline: none;
   border: 1px solid #eee;
   padding: 12px 48px 12px 12px;
+  border-radius: 0;
+  overflow: hidden;
+  isolation: isolate;
 }
 /* @media (max-width: 1199px) {
   #nav-search-input {
