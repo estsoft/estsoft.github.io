@@ -670,7 +670,10 @@ footer .footer-custom-content {
 .post-preview .blog-tags {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space:nowrap;
   word-break: break-all;
+  display: block;
+  width: 100%;
   color: #AEAEAE;
   margin-top: 10px;
   margin-bottom: 0;
@@ -1155,7 +1158,6 @@ pre {
   padding: 12px 48px 12px 12px;
   border-radius: 0;
   overflow: hidden;
-  isolation: isolate;
 }
 /* @media (max-width: 1199px) {
   #nav-search-input {
