@@ -150,9 +150,17 @@ img {
   display: block;
   font-size: 0;
   line-height: 0;
-  width: 151px;
-  height: 33px;
+  width: 84px;
+  height: 18px;
   background: url(../img/logo_estsoft_tech.png) 0 0 / 100% auto no-repeat;
+  padding: 0;
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .navbar-custom .navbar-brand {
+    width: 103px;
+    height: 22px;
+  }
 }
 
 .navbar-custom .navbar-brand-logo {
