@@ -150,8 +150,8 @@ img {
   display: block;
   font-size: 0;
   line-height: 0;
-  width: 114px;
-  height: 22px;
+  width: 151px;
+  height: 33px;
   background: url(../img/logo_estsoft_tech.png) 0 0 / 100% auto no-repeat;
 }
 
@@ -422,7 +422,7 @@ footer .copyright {
 }
 footer .img_logo {
   display: block;
-  width: 70px;
+  width: 53px;
   height: 13px;
   background: url("../img/img_footer_logo.png") 0 0 / 100% auto no-repeat;
   margin: 0 auto 10px;
